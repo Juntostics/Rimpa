@@ -7,15 +7,29 @@
 //
 
 #import "AppDelegate.h"
+#import "LandingPageController.h"
+#import "UserData.h"
+
+@interface AppDelegate ()
+{
+}
+
+@end
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UserData *userData = [UserData new];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    LandingPageController *landingPageController = [LandingPageController new];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:landingPageController];
+    self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 
