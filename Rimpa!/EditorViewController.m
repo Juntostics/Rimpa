@@ -9,9 +9,11 @@
 #import "EditorViewController.h"
 #import "ViewUtils.h"
 #import "WordLabel.h"
+#import "BoxView.h"
 #import "TemporaryProductViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UserData.h"
+#import "SPUserResizableView.h"
 
 
 
@@ -22,7 +24,9 @@
     IBOutlet UITableView *tableView;
     IBOutlet UITableView *colorTableView;
     NSMutableArray *labelList;
-    NSInteger initialPosition;
+    NSMutableArray *boxList;
+    NSInteger initialPositionForLabel;
+    NSInteger initialPositionForBox;
     CGPoint  touchPoint;
     WordLabel *touchedLabel;
     NSDate *touchDate;
@@ -31,7 +35,6 @@
     NSArray *colors;
     CGRect defaultTableViewFrame;
     UIImage *image;
-    
     UserData *userData;
     
 }
@@ -103,13 +106,31 @@
 
 - (void)viewDidLoad
 {
+    //SPuser用テスト
+    CGRect gripFrame = CGRectMake(50, 50, 200, 150);
+    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+    [contentView setBackgroundColor:[UIColor redColor]];
+    userResizableView.contentView = contentView;
+    userResizableView.delegate = self;
+    [userResizableView showEditingHandles];
+    currentlyEditingView = userResizableView;
+    lastEditedView = userResizableView;
+    [self.view addSubview:userResizableView];
+
+    
+    
+    //ボックスからフォーカスを外すためのパンジェスチャー
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEditingHandles)];
+    [gestureRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:gestureRecognizer];
+
+    
+    
+    
     //UserDataのSingletonをゲット
     userData = [UserData shareUserData];
-    
-    
-    
-    
-    
+
     //color配列の初期化
     colors =
     [NSArray arrayWithObjects:[UIColor blackColor],[UIColor blueColor],
@@ -118,6 +139,7 @@
      [UIColor lightGrayColor],[UIColor magentaColor],[UIColor orangeColor],
      [UIColor purpleColor],[UIColor redColor],[UIColor whiteColor],
      [UIColor yellowColor], nil];
+    
     //fontの配列を取得
     fontFamilyNames = [UIFont familyNames];
     //tableViewの初期化
@@ -136,8 +158,11 @@
     
     //wordLabelを入れる配列を生成
     labelList = [NSMutableArray array];
-    initialPosition =0;
+    initialPositionForLabel =0;
     
+    //背景のボックスとなるboxViewを入れる配列を生成
+    boxList = [NSMutableArray array];
+    initialPositionForBox = 0;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -199,12 +224,22 @@
 {
     
     WordLabel *label = [WordLabel new];
-    label.frame = CGRectMake(100+initialPosition, 100+initialPosition, 100, 50);
+    label.frame = CGRectMake(100+initialPositionForLabel, 100+initialPositionForLabel, 100, 50);
     label.text = @"input text.";
     [labelList addObject:label];
     [imageView addSubview:label];
-    initialPosition += 25;
+    initialPositionForLabel += 25;
     label.delegate = self;
+}
+
+-(IBAction)generateBox:(id)sender
+{
+    BoxView *boxView = [BoxView new];
+    boxView.frame =  CGRectMake(200+initialPositionForLabel, 200+initialPositionForLabel, 300, 100);
+    [boxList addObject:boxView];
+    [imageView addSubview:boxView];
+    initialPositionForBox += 25;
+    boxView.delegate = self;
 }
 
 -(IBAction)beLager:(id)sender{
@@ -299,7 +334,7 @@
 //
 //}
 
-- (void)panAction : (UIPanGestureRecognizer *)sender
+- (void)panActionForLabel : (UIPanGestureRecognizer *)sender
 {
     CGPoint p = [sender translationInView:self.view];
 	
@@ -314,7 +349,21 @@
 
 }
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)sender
+- (void) panActionForBox:(UIPanGestureRecognizer *)sender
+{
+    CGPoint p = [sender translationInView:self.view];
+	
+    // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
+    CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
+    sender.view.center = movedPoint;
+	
+    // ドラッグで移動した距離を初期化する
+    // これを行わないと、[sender translationInView:]が返す距離は、ドラッグが始まってからの蓄積値となるため、
+    // 今回のようなドラッグに合わせてImageを動かしたい場合には、蓄積値をゼロにする
+    [sender setTranslation:CGPointZero inView:self.view];
+}
+
+- (void)handleSingleTapForLabel:(UITapGestureRecognizer *)sender
 {
     touchedLabel = nil;
 
@@ -326,7 +375,12 @@
     [touchedLabel forcusedNow];
 }
 
-- (void)handleDoubleTap:(UITapGestureRecognizer *)sender
+-(void)handleSingleTapForBox:(UITapGestureRecognizer *)sender
+{
+    
+}
+
+- (void)handleDoubleTapForLabel:(UITapGestureRecognizer *)sender
 {
     
     touchedLabel = nil;
@@ -347,6 +401,12 @@
         [label setAlpha:0];
     }
 }
+
+- (void)handleDoubleTapForBox:(UITapGestureRecognizer *)sender
+{
+    
+}
+
 -(IBAction)slideToRightFontBar:(id)sender{
     [self slideTableViewToRight:tableView];
 }
@@ -386,6 +446,36 @@
     [self.navigationController pushViewController:temporaryViewController animated:YES];
 }
 
+-(IBAction)deleteLabel:(id)sender
+{
+    
+    [labelList removeObject:touchedLabel];
+    [touchedLabel removeFromSuperview];
+    touchedLabel = nil;
+}
+
+
+- (void)userResizableViewDidBeginEditing:(SPUserResizableView *)userResizableView {
+    [currentlyEditingView hideEditingHandles];
+    currentlyEditingView = userResizableView;
+}
+
+- (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
+    lastEditedView = userResizableView;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([currentlyEditingView hitTest:[touch locationInView:currentlyEditingView] withEvent:nil]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)hideEditingHandles {
+    // We only want the gesture recognizer to end the editing session on the last
+    // edited view. We wouldn't want to dismiss an editing session in progress.
+    [lastEditedView hideEditingHandles];
+}
 
 
 

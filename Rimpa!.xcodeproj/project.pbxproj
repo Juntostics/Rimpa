@@ -21,6 +21,8 @@
 		7444EA9D17B014D400BEB16F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA7E17B014D300BEB16F /* Foundation.framework */; };
 		7444EAA517B014D400BEB16F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7444EAA317B014D400BEB16F /* InfoPlist.strings */; };
 		7444EAA817B014D400BEB16F /* Rimpa_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7444EAA717B014D400BEB16F /* Rimpa_Tests.m */; };
+		7449802517B9480E00E3C0E4 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449802417B9480E00E3C0E4 /* SPUserResizableView.m */; };
+		7449802617B9491F00E3C0E4 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449802417B9480E00E3C0E4 /* SPUserResizableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		74C48FF617B43FA400BC1D1F /* TemporaryProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C48FF417B43FA400BC1D1F /* TemporaryProductViewController.m */; };
 		74C48FF717B43FA400BC1D1F /* TemporaryProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C48FF517B43FA400BC1D1F /* TemporaryProductViewController.xib */; };
 		74C48FFA17B45F9700BC1D1F /* GalleryImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C48FF917B45F9600BC1D1F /* GalleryImages.m */; };
@@ -43,6 +45,9 @@
 		74C4902117B58CE300BC1D1F /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4902017B58CE300BC1D1F /* UserData.m */; };
 		74C4902517B5A0B600BC1D1F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4902317B5A0B500BC1D1F /* PhotoViewController.m */; };
 		74C4902617B5A0B600BC1D1F /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C4902417B5A0B500BC1D1F /* PhotoViewController.xib */; };
+		74C4902817B5B95800BC1D1F /* washi1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C4902717B5B95800BC1D1F /* washi1.jpg */; };
+		74C4902A17B5BB7700BC1D1F /* washi2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C4902917B5BB7700BC1D1F /* washi2.jpg */; };
+		74C4902D17B7F08E00BC1D1F /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4902C17B7F08E00BC1D1F /* BoxView.m */; };
 		74F4384117B01894005C3401 /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4383F17B01894005C3401 /* LandingPageController.m */; };
 		74F4384217B01894005C3401 /* LandingPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4384017B01894005C3401 /* LandingPageController.xib */; };
 		74F4384617B018B6005C3401 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4384417B018B6005C3401 /* GalleryViewController.m */; };
@@ -88,6 +93,8 @@
 		7444EAA417B014D400BEB16F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7444EAA617B014D400BEB16F /* Rimpa_Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rimpa_Tests.h; sourceTree = "<group>"; };
 		7444EAA717B014D400BEB16F /* Rimpa_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rimpa_Tests.m; sourceTree = "<group>"; };
+		7449802317B9480E00E3C0E4 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
+		7449802417B9480E00E3C0E4 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		74C48FF317B43FA300BC1D1F /* TemporaryProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporaryProductViewController.h; sourceTree = "<group>"; };
 		74C48FF417B43FA400BC1D1F /* TemporaryProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemporaryProductViewController.m; sourceTree = "<group>"; };
 		74C48FF517B43FA400BC1D1F /* TemporaryProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporaryProductViewController.xib; sourceTree = "<group>"; };
@@ -114,6 +121,10 @@
 		74C4902217B5A0B500BC1D1F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		74C4902317B5A0B500BC1D1F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		74C4902417B5A0B500BC1D1F /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
+		74C4902717B5B95800BC1D1F /* washi1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = washi1.jpg; sourceTree = "<group>"; };
+		74C4902917B5BB7700BC1D1F /* washi2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = washi2.jpg; sourceTree = "<group>"; };
+		74C4902B17B7F08E00BC1D1F /* BoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
+		74C4902C17B7F08E00BC1D1F /* BoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
 		74F4383E17B01894005C3401 /* LandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageController.h; sourceTree = "<group>"; };
 		74F4383F17B01894005C3401 /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
 		74F4384017B01894005C3401 /* LandingPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingPageController.xib; sourceTree = "<group>"; };
@@ -279,12 +290,16 @@
 		74F4385717B02DC9005C3401 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				7449802317B9480E00E3C0E4 /* SPUserResizableView.h */,
+				7449802417B9480E00E3C0E4 /* SPUserResizableView.m */,
 				74C48FFE17B557C700BC1D1F /* ABGridView.h */,
 				74C48FFF17B557C700BC1D1F /* ABGridView.m */,
 				74F4385817B02DF7005C3401 /* ViewUtils.h */,
 				74F4385917B02DF7005C3401 /* ViewUtils.m */,
 				74F4386417B15EDD005C3401 /* WordLabel.h */,
 				74F4386517B15EDD005C3401 /* WordLabel.m */,
+				74C4902B17B7F08E00BC1D1F /* BoxView.h */,
+				74C4902C17B7F08E00BC1D1F /* BoxView.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -292,6 +307,8 @@
 		74F4385B17B045D0005C3401 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				74C4902917B5BB7700BC1D1F /* washi2.jpg */,
+				74C4902717B5B95800BC1D1F /* washi1.jpg */,
 				74C4900217B5680100BC1D1F /* rinpa16.jpg */,
 				74C4900317B5680100BC1D1F /* rinpa15.jpg */,
 				74C4900417B5680100BC1D1F /* rinpa14.jpg */,
@@ -408,6 +425,8 @@
 				74C4901C17B5680100BC1D1F /* rinpa4.jpg in Resources */,
 				74C4901D17B5680100BC1D1F /* rinpa3.jpg in Resources */,
 				74C4902617B5A0B600BC1D1F /* PhotoViewController.xib in Resources */,
+				74C4902817B5B95800BC1D1F /* washi1.jpg in Resources */,
+				74C4902A17B5BB7700BC1D1F /* washi2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7449802617B9491F00E3C0E4 /* SPUserResizableView.m in Sources */,
 				74C4900117B5584000BC1D1F /* ABGridView.m in Sources */,
 				7444EA8917B014D300BEB16F /* main.m in Sources */,
 				7444EA8D17B014D300BEB16F /* AppDelegate.m in Sources */,
@@ -456,6 +476,7 @@
 				74C48FFA17B45F9700BC1D1F /* GalleryImages.m in Sources */,
 				74C4902117B58CE300BC1D1F /* UserData.m in Sources */,
 				74C4902517B5A0B600BC1D1F /* PhotoViewController.m in Sources */,
+				74C4902D17B7F08E00BC1D1F /* BoxView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +486,7 @@
 			files = (
 				7444EAA817B014D400BEB16F /* Rimpa_Tests.m in Sources */,
 				74C4900017B557C700BC1D1F /* ABGridView.m in Sources */,
+				7449802517B9480E00E3C0E4 /* SPUserResizableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

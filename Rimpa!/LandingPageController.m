@@ -32,6 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *backgroundimage = [UIImage imageNamed:@"washi2.jpg"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     // Do any additional setup after loading the view from its nib.
 }
 

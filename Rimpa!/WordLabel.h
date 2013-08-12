@@ -19,9 +19,9 @@
 
 @protocol WordLabelDelegate <NSObject>
 
-- (void)panAction : (UIPanGestureRecognizer *)sender;
-- (void)handleSingleTap :(UITapGestureRecognizer *)sender;
-- (void)handleDoubleTap :(UITapGestureRecognizer *)sender;
+- (void)panActionForLabel : (UIPanGestureRecognizer *)sender;
+- (void)handleSingleTapForLabel :(UITapGestureRecognizer *)sender;
+- (void)handleDoubleTapForLabel :(UITapGestureRecognizer *)sender;
 
 
 @end

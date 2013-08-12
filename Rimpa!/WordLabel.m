@@ -77,15 +77,15 @@
 
 - (void)panAction : (UIPanGestureRecognizer *)sender
 {
-    [self.delegate panAction:sender];
+    [self.delegate panActionForLabel:sender];
 }
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender
 {
-    [self.delegate handleSingleTap:sender];
+    [self.delegate handleSingleTapForLabel:sender];
 }
 - (void)handleDoubleTap:(UITapGestureRecognizer *)sender
 {
-    [self.delegate handleDoubleTap:sender];
+    [self.delegate handleDoubleTapForLabel:sender];
 
 }
 

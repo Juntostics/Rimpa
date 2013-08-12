@@ -10,6 +10,7 @@
 #import "ABGridView.h"
 #import "UserData.h"
 #import "PhotoViewController.h"
+#import <QuartzCore/QuartzCore.h>
 @interface GalleryViewController ()<ABGridViewDelegate>
 {
     IBOutlet ABGridView *abGridView;
@@ -30,6 +31,9 @@
 
 - (void)viewDidLoad
 {
+    
+    //set bacgroundcolor on view
+    UIImage *backgroundimage = [UIImage imageNamed:@"washi2.jpg"];
     //get UserData by Singleton
     userData = [UserData shareUserData];
    
@@ -37,6 +41,7 @@
     [self.view addSubview:abGridView];
     [abGridView setDelegate:self];
     abGridView.itemSize = CGSizeMake(300, 150);
+    abGridView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     [abGridView reloadData];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -65,6 +70,8 @@
         item = [UIImageView new];
     }
     item.image = userData.images[index];
+    item.layer.borderColor = [UIColor whiteColor].CGColor;
+    item.layer.borderWidth = 3;
     
     return item;
 }

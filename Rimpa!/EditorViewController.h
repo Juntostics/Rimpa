@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "WordLabel.h"
+#import "BoxView.h"
+#import "SPUserResizableView.h"
 
-@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,BoxViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate>
+{
+    SPUserResizableView *currentlyEditingView;
+    SPUserResizableView *lastEditedView;
+
+}
 -(void)moveLabelToPoint:(CGPoint)currentPoint;
 
 - (void)checkTapTime:(NSTimer *)timer;
