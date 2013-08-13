@@ -14,11 +14,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UserData.h"
 #import "SPUserResizableView.h"
+#import "ResizableBoxView.h"
+#import "DataForSaving.h"
 
 
 
 @interface EditorViewController ()
 {
+    IBOutlet UISlider *sliderForBoxAlpha;
     IBOutlet UIImageView *imageView;
     IBOutlet UITextView *textView;
     IBOutlet UITableView *tableView;
@@ -36,6 +39,7 @@
     CGRect defaultTableViewFrame;
     UIImage *image;
     UserData *userData;
+    id nowForcusingOn;
     
 }
 
@@ -106,18 +110,21 @@
 
 - (void)viewDidLoad
 {
-    //SPuser用テスト
-    CGRect gripFrame = CGRectMake(50, 50, 200, 150);
-    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
-    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    [contentView setBackgroundColor:[UIColor redColor]];
-    userResizableView.contentView = contentView;
-    userResizableView.delegate = self;
-    [userResizableView showEditingHandles];
-    currentlyEditingView = userResizableView;
-    lastEditedView = userResizableView;
-    [self.view addSubview:userResizableView];
-
+    //boxアルファを変更するためのスライダーの設定
+    sliderForBoxAlpha.minimumValue = 0;
+    sliderForBoxAlpha.maximumValue = 1;
+    sliderForBoxAlpha.value = 0.5;
+    
+    // スライドしている最中に値を調べられるようにする．
+    // デフォルトでYESだがサンプルのため
+    sliderForBoxAlpha.continuous = YES;
+    
+    // スライダーの値が変更されたときに呼ばれるメソッドを設定
+    [sliderForBoxAlpha addTarget:self
+               action:@selector(slider_ValueChanged:)
+     forControlEvents:UIControlEventValueChanged];
+    
+    
     
     
     //ボックスからフォーカスを外すためのパンジェスチャー
@@ -183,25 +190,20 @@
     // ボタンをViewに貼る
     [accessoryView addSubview:closeButton];
     textView.inputAccessoryView = accessoryView;
-    //----------------------------
-    
-    
-    //    NSString *familyName;
-//    for(familyName in familyNames){
-//        NSLog(@"---  family name: %@", familyName);
-//        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
-//        NSString *fontName;
-//        for(fontName in fontNames){
-//            NSLog(@"  font name: %@", fontName);
-//        }
-//    }
-
+    //---------------------------
 }
+
+- (void)slider_ValueChanged:(id)sender
+{
+    UISlider *slider = sender;
+    currentlyEditingView.alpha = slider.value;
+}
+
+
 -(void)closeKeyboard:(id)sender{
     [textView resignFirstResponder];
     [textView setAlpha:0];
     [touchedLabel setText:textView.text];
-    NSLog(@"%@",touchedLabel);
     for (WordLabel *label in labelList) {
         [label setAlpha:1];
     }
@@ -228,18 +230,28 @@
     label.text = @"input text.";
     [labelList addObject:label];
     [imageView addSubview:label];
+    [imageView bringSubviewToFront:label];
     initialPositionForLabel += 25;
     label.delegate = self;
 }
 
 -(IBAction)generateBox:(id)sender
 {
-    BoxView *boxView = [BoxView new];
-    boxView.frame =  CGRectMake(200+initialPositionForLabel, 200+initialPositionForLabel, 300, 100);
-    [boxList addObject:boxView];
-    [imageView addSubview:boxView];
-    initialPositionForBox += 25;
-    boxView.delegate = self;
+    CGRect gripFrame = CGRectMake(50, 50, 200, 150);
+    ResizableBoxView *userResizableView = [[ResizableBoxView alloc] initWithFrame:gripFrame];
+    userResizableView.backgroundColor = [UIColor clearColor];
+    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+    [contentView setBackgroundColor:[UIColor grayColor]];
+    userResizableView.contentView = contentView;
+    userResizableView.delegate = self;
+    [userResizableView showEditingHandles];
+    userResizableView.alpha = 0.5;
+    currentlyEditingView = userResizableView;
+    lastEditedView = userResizableView;
+    [imageView addSubview:userResizableView];
+    [imageView sendSubviewToBack:userResizableView];
+    
+    [boxList addObject:userResizableView];
 }
 
 -(IBAction)beLager:(id)sender{
@@ -254,85 +266,6 @@
     [touchedLabel sizeToFit];
 }
 
-
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-//    // タッチされた座標を取得
-//    touchPoint = [[touches anyObject] locationInView:self.view];
-//                NSLog(@"touchesBegan");
-//
-//    
-//    for (id obj in labelList) {
-//        // AgendaCircleかどうかの判別
-//        WordLabel *label = (WordLabel *)obj;
-//        NSLog(@"%f,%f,%f,%f,%f,%f",touchPoint.x,touchPoint.y,label.frame.origin.x,label.frame.origin.y,label.frame.origin.x+label.frame.size.width,label.frame.origin.y+label.frame.size.height);
-//        
-//        if(touchPoint.x-label.frame.origin.x >=0 && touchPoint.y-label.frame.origin.y>=0&& label.frame.origin.x+label.frame.size.width-touchPoint.x>=0&&label.frame.origin.y+label.frame.size.height - touchPoint.y>=0)
-//        {
-//            // タッチされたcircleを指定
-//            touchedLabel = label;
-//            // タッチされた時刻を指定
-//            touchDate = [NSDate date];
-//            // タッチ時間にタイマーを設定
-//            tapTimer = [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(checkTapTime:) userInfo:nil repeats:NO];
-//            
-//            
-//            // タッチされたCircleを全面に表示
-//            [self.view bringSubviewToFront:touchedLabel];
-//            [touchedLabel forcusedNow];
-//        }
-//        
-//    }
-//}
-//
-//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"hi");
-//    // 移動中の座標
-//    CGPoint pt = [[touches anyObject] locationInView:self.view];
-//    
-//    // 移動距離
-//    CGFloat dist = sqrt((touchPoint.x-pt.x)*(touchPoint.x-pt.x) + (touchPoint.y-pt.y)*(touchPoint.y-pt.y));
-//    
-//    // Circleをタッチしたとき
-//    if (touchedLabel) {
-//        // 少しでも移動していたとき、Circleを動かす
-//        if (dist > 0) {
-//            [self moveLabelToPoint:pt];
-//        }
-//        
-//        // タイマーは無効化
-//        [tapTimer invalidate]; // stop timer
-//        tapTimer = nil;
-//    }
-//}
-//
-//-(void)moveLabelToPoint:(CGPoint)currentPoint
-//{
-//    CGRect rect = touchedLabel.frame;
-//    rect.origin.x = currentPoint.x;
-//    rect.origin.y = currentPoint.y;
-//    touchedLabel.frame = rect;
-//}
-//
-//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-//    // Circleがタッチされたとき
-//    if (touchedLabel) {
-//        // シングルタップ
-//    }
-//    
-//    // Circle以外がタッチされたとき
-//
-//    // タッチ関連の変数を空にする
-//    touchedLabel = nil;
-//    touchDate = nil;
-//    [tapTimer invalidate]; // stop timer
-//    tapTimer = nil;
-//}
-//
-//// 一定時間後にこのメソッドが呼ばれたら、長押しと判断する
-//- (void)checkTapTime:(NSTimer *)timer
-//{
-//
-//}
 
 - (void)panActionForLabel : (UIPanGestureRecognizer *)sender
 {
@@ -349,20 +282,6 @@
 
 }
 
-- (void) panActionForBox:(UIPanGestureRecognizer *)sender
-{
-    CGPoint p = [sender translationInView:self.view];
-	
-    // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
-    CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
-    sender.view.center = movedPoint;
-	
-    // ドラッグで移動した距離を初期化する
-    // これを行わないと、[sender translationInView:]が返す距離は、ドラッグが始まってからの蓄積値となるため、
-    // 今回のようなドラッグに合わせてImageを動かしたい場合には、蓄積値をゼロにする
-    [sender setTranslation:CGPointZero inView:self.view];
-}
-
 - (void)handleSingleTapForLabel:(UITapGestureRecognizer *)sender
 {
     touchedLabel = nil;
@@ -375,10 +294,7 @@
     [touchedLabel forcusedNow];
 }
 
--(void)handleSingleTapForBox:(UITapGestureRecognizer *)sender
-{
-    
-}
+
 
 - (void)handleDoubleTapForLabel:(UITapGestureRecognizer *)sender
 {
@@ -400,11 +316,6 @@
     for (WordLabel *label in labelList) {
         [label setAlpha:0];
     }
-}
-
-- (void)handleDoubleTapForBox:(UITapGestureRecognizer *)sender
-{
-    
 }
 
 -(IBAction)slideToRightFontBar:(id)sender{
@@ -443,6 +354,11 @@
     TemporaryProductViewController *temporaryViewController =  [TemporaryProductViewController new];
     temporaryViewController.image = bitmap;
     [userData addData:bitmap];
+    
+    //datファイルに保存する
+    DataForSaving *data = [[DataForSaving alloc] initWithMakingData:@"rinpa2.jpg" label:labelList box:boxList];
+    
+    
     [self.navigationController pushViewController:temporaryViewController animated:YES];
 }
 
@@ -477,8 +393,10 @@
     [lastEditedView hideEditingHandles];
 }
 
-
-
-
+-(IBAction)deleteBox:(id)sender{
+    [boxList removeObject:currentlyEditingView];
+    [currentlyEditingView removeFromSuperview];
+    currentlyEditingView = lastEditedView;
+}
 
 @end

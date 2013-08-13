@@ -23,6 +23,8 @@
 		7444EAA817B014D400BEB16F /* Rimpa_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7444EAA717B014D400BEB16F /* Rimpa_Tests.m */; };
 		7449802517B9480E00E3C0E4 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449802417B9480E00E3C0E4 /* SPUserResizableView.m */; };
 		7449802617B9491F00E3C0E4 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449802417B9480E00E3C0E4 /* SPUserResizableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7449802917B95F6C00E3C0E4 /* ResizableBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449802817B95F6B00E3C0E4 /* ResizableBoxView.m */; };
+		7449802C17B9978E00E3C0E4 /* DataForSaving.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449802B17B9978E00E3C0E4 /* DataForSaving.m */; };
 		74C48FF617B43FA400BC1D1F /* TemporaryProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C48FF417B43FA400BC1D1F /* TemporaryProductViewController.m */; };
 		74C48FF717B43FA400BC1D1F /* TemporaryProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C48FF517B43FA400BC1D1F /* TemporaryProductViewController.xib */; };
 		74C48FFA17B45F9700BC1D1F /* GalleryImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C48FF917B45F9600BC1D1F /* GalleryImages.m */; };
@@ -95,6 +97,10 @@
 		7444EAA717B014D400BEB16F /* Rimpa_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rimpa_Tests.m; sourceTree = "<group>"; };
 		7449802317B9480E00E3C0E4 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7449802417B9480E00E3C0E4 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
+		7449802717B95F6B00E3C0E4 /* ResizableBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBoxView.h; sourceTree = "<group>"; };
+		7449802817B95F6B00E3C0E4 /* ResizableBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBoxView.m; sourceTree = "<group>"; };
+		7449802A17B9978E00E3C0E4 /* DataForSaving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataForSaving.h; sourceTree = "<group>"; };
+		7449802B17B9978E00E3C0E4 /* DataForSaving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataForSaving.m; sourceTree = "<group>"; };
 		74C48FF317B43FA300BC1D1F /* TemporaryProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporaryProductViewController.h; sourceTree = "<group>"; };
 		74C48FF417B43FA400BC1D1F /* TemporaryProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemporaryProductViewController.m; sourceTree = "<group>"; };
 		74C48FF517B43FA400BC1D1F /* TemporaryProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporaryProductViewController.xib; sourceTree = "<group>"; };
@@ -283,6 +289,8 @@
 				74C48FF917B45F9600BC1D1F /* GalleryImages.m */,
 				74C4901F17B58CE300BC1D1F /* UserData.h */,
 				74C4902017B58CE300BC1D1F /* UserData.m */,
+				7449802A17B9978E00E3C0E4 /* DataForSaving.h */,
+				7449802B17B9978E00E3C0E4 /* DataForSaving.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,6 +308,8 @@
 				74F4386517B15EDD005C3401 /* WordLabel.m */,
 				74C4902B17B7F08E00BC1D1F /* BoxView.h */,
 				74C4902C17B7F08E00BC1D1F /* BoxView.m */,
+				7449802717B95F6B00E3C0E4 /* ResizableBoxView.h */,
+				7449802817B95F6B00E3C0E4 /* ResizableBoxView.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -477,6 +487,8 @@
 				74C4902117B58CE300BC1D1F /* UserData.m in Sources */,
 				74C4902517B5A0B600BC1D1F /* PhotoViewController.m in Sources */,
 				74C4902D17B7F08E00BC1D1F /* BoxView.m in Sources */,
+				7449802917B95F6C00E3C0E4 /* ResizableBoxView.m in Sources */,
+				7449802C17B9978E00E3C0E4 /* DataForSaving.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
