@@ -11,6 +11,5 @@
 
 @interface GalleryViewController : UIViewController
 {
-    UserData *userData;
 }
 @end

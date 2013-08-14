@@ -43,6 +43,7 @@ static UserData* _sharedInstance = nil;
 - (void)_init
 {
     galleryImages = [GalleryImages new];
+    _userDataList = [NSMutableArray array];
     _images = [NSMutableArray arrayWithArray:galleryImages.images];
 }
 
@@ -65,6 +66,7 @@ static UserData* _sharedInstance = nil;
     
     // pdfを追加する
     [_userDataList addObject:data];
+    [_images addObject:data.product];
 }
 
 - (void)insertData:(DataForSaving *)data atIndex:(unsigned int)index
@@ -151,7 +153,7 @@ static UserData* _sharedInstance = nil;
     }
     
     // チャンネルの配列を読み込む
-    NSArray*    userDatas;
+    NSArray*  userDatas;
     userDatas = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
     if (!userDatas) {
         return;
@@ -159,6 +161,10 @@ static UserData* _sharedInstance = nil;
     
     // チャンネルの配列を設定する
     [_userDataList setArray:userDatas];
+    for (DataForSaving *data in _userDataList) {
+        [_images addObject:data.product];
+    }
+    
 }
 
 - (void)save
@@ -171,7 +177,7 @@ static UserData* _sharedInstance = nil;
     NSString*   dataDir;
     dataDir = [self _makeDir];
     if (![fileMgr fileExistsAtPath:dataDir]) {
-        NSError*    error;
+        NSError* error;
         [fileMgr createDirectoryAtPath:dataDir
            withIntermediateDirectories:YES attributes:nil error:&error];
     }
@@ -179,6 +185,7 @@ static UserData* _sharedInstance = nil;
     // チャンネルの配列を保存する
     NSString*   filePath;
     filePath = [self _makePath];
+    NSLog(@"%@", filePath);
     [NSKeyedArchiver archiveRootObject:_userDataList toFile:filePath];
 }
 

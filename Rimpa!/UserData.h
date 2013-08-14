@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataForSaving.h"
 
 @interface UserData : NSObject
 {
@@ -18,7 +19,7 @@
 
 + (UserData *)shareUserData;
 
--(void) addData:(UIImage*)img;
+- (void)addData:(DataForSaving *)data;
 
 // 永続化
 - (void)load;

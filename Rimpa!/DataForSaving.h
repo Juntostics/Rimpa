@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataForSaving : NSObject
+@interface DataForSaving : NSObject<NSCoding>
 
 @property (nonatomic, strong) NSString *filename;
 @property (nonatomic, strong) NSString *filepath;
@@ -16,6 +16,7 @@
 @property (nonatomic,strong) NSArray *labelList;
 @property (nonatomic,strong) NSArray *boxList;
 @property (nonatomic,strong) NSString *photoName;
+@property(nonatomic,strong)UIImage *product;
 
--(id)initWithMakingData:(NSString *)photoName label:(NSArray *)labelList box:(NSArray *)boxList;
+-(id)initWithMakingData:(NSString *)photoName label:(NSArray *)labelList box:(NSArray *)boxList product:(UIImage *)product;
 @end

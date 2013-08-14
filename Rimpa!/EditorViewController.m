@@ -38,7 +38,6 @@
     NSArray *colors;
     CGRect defaultTableViewFrame;
     UIImage *image;
-    UserData *userData;
     id nowForcusingOn;
     
 }
@@ -135,9 +134,6 @@
     
     
     
-    //UserDataのSingletonをゲット
-    userData = [UserData shareUserData];
-
     //color配列の初期化
     colors =
     [NSArray arrayWithObjects:[UIColor blackColor],[UIColor blueColor],
@@ -353,10 +349,13 @@
     UIGraphicsEndImageContext();
     TemporaryProductViewController *temporaryViewController =  [TemporaryProductViewController new];
     temporaryViewController.image = bitmap;
-    [userData addData:bitmap];
     
     //datファイルに保存する
-    DataForSaving *data = [[DataForSaving alloc] initWithMakingData:@"rinpa2.jpg" label:labelList box:boxList];
+    DataForSaving *data = [[DataForSaving alloc] initWithMakingData:@"rinpa2.jpg" label:labelList box:boxList product:bitmap];
+    [[UserData shareUserData] addData:data];
+    [[UserData shareUserData] save];
+    NSLog(@"%d",[[UserData shareUserData].userDataList count]);
+
     
     
     [self.navigationController pushViewController:temporaryViewController animated:YES];

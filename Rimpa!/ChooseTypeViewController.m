@@ -8,11 +8,17 @@
 
 #import "ChooseTypeViewController.h"
 #import "ChooseBackgroundViewController.h"
+#import "SWRevealViewController.h"
+#import "FrontViewController.h"
+#import "RearViewController.h"
+#import "RightViewController.h"
 
-@interface ChooseTypeViewController ()
+@interface ChooseTypeViewController ()<SWRevealViewControllerDelegate>
 {
     IBOutlet UIButton *buttonNext;
 }
+
+@property (strong, nonatomic) SWRevealViewController *viewController;
 
 @end
 
@@ -42,8 +48,31 @@
 }
 -(IBAction)pushToChooseBackground:(id)sender
 {
-    ChooseBackgroundViewController *chooseBackgroundViewController = [ChooseBackgroundViewController new];
-    [self.navigationController pushViewController:chooseBackgroundViewController animated:YES];
-}
+//    ChooseBackgroundViewController *chooseBackgroundViewController = [ChooseBackgroundViewController new];
+//    [self.navigationController pushViewController:chooseBackgroundViewController animated:YES];
+    
+    FrontViewController *frontViewController = [[FrontViewController alloc] init];
+	RearViewController *rearViewController = [[RearViewController alloc] init];
+	
+	UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+	
+	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+    revealController.delegate = self;
+    
+    
+    RightViewController *rightViewController = rightViewController = [[RightViewController alloc] init];
+    rightViewController.view.backgroundColor = [UIColor greenColor];
+    
+    revealController.rightViewController = rightViewController;
+    
+    //revealController.bounceBackOnOverdraw=NO;
+    //revealController.stableDragOnOverdraw=YES;
+    
+//	self.viewController = revealController;
+	
+    [self.navigationController pushViewController:revealController animated:YES];
+    
+    }
 
 @end

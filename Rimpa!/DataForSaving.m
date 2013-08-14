@@ -12,6 +12,7 @@
 #define LABELKEY @"labelList"
 #define BOXKEY @"boxList"
 #define PUBDATEKEY @"pubDate"
+#define PRODUCTKEY @"product"
 
 @implementation DataForSaving
 
@@ -24,13 +25,14 @@
     return self;
 }
 
--(id)initWithMakingData:(NSString *)photoName label:(NSArray *)labelList box:(NSArray *)boxList{
+-(id)initWithMakingData:(NSString *)photoName label:(NSArray *)labelList box:(NSArray *)boxList product:(UIImage *)product{
     self = [super init];
     if(self){
         _photoName = photoName;
         _labelList = labelList;
         _boxList = boxList;
         _pubDate = [NSDate date];
+        _product = product;
     }
     return self;
 }
@@ -46,7 +48,9 @@
     _photoName = [decoder decodeObjectForKey:PHOTONAMEKEY];
     _labelList = [decoder decodeObjectForKey:LABELKEY];
     _boxList = [decoder decodeObjectForKey:BOXKEY];
+    _product = [decoder decodeObjectForKey:PRODUCTKEY];
     _pubDate = [decoder decodeObjectForKey:PUBDATEKEY];
+    
     
     return self;
 }
@@ -57,6 +61,7 @@
     [encoder encodeObject:_photoName forKey:PHOTONAMEKEY];
     [encoder encodeObject:_labelList forKey:LABELKEY];
     [encoder encodeObject:_boxList forKey:BOXKEY];
+    [encoder encodeObject:_product forKey:PRODUCTKEY];
     [encoder encodeObject:_pubDate forKey:PUBDATEKEY];
 }
 

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "UserData.h"
+#import "SWRevealViewController.h"
 
-@interface ChooseTypeViewController : UIViewController
+@interface ChooseTypeViewController : UIViewController<UIApplicationDelegate>
 -(IBAction)pushToChooseBackground:(id)sender;
-@property (nonatomic,strong)UserData *userData;
 
 
 @end

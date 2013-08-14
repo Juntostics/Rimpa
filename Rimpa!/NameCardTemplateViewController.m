@@ -1,24 +1,25 @@
 //
-//  GalleryViewController.m
+//  NameCardTemplateViewController.m
 //  Rimpa!
 //
-//  Created by pcuser on 2013/08/05.
+//  Created by pcuser on 2013/08/13.
 //  Copyright (c) 2013年 pcuser. All rights reserved.
 //
 
-#import "GalleryViewController.h"
+#import "NameCardTemplateViewController.h"
 #import "ABGridView.h"
-#import "UserData.h"
-#import "PhotoViewController.h"
 #import <QuartzCore/QuartzCore.h>
-@interface GalleryViewController ()<ABGridViewDelegate>
+#import "GalleryImages.h"
+
+@interface NameCardTemplateViewController ()<ABGridViewDelegate>
 {
     IBOutlet ABGridView *abGridView;
+    GalleryImages *images;
 }
 
 @end
 
-@implementation GalleryViewController
+@implementation NameCardTemplateViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,18 +32,18 @@
 
 - (void)viewDidLoad
 {
+    //new gallerImages
+    images = [GalleryImages new];
     
-    //set bacgroundcolor on view
-    UIImage *backgroundimage = [UIImage imageNamed:@"washi2.jpg"];
-   
+    
+    
     //add abgridview
     [self.view addSubview:abGridView];
     [abGridView setDelegate:self];
     abGridView.itemSize = CGSizeMake(300, 150);
-    abGridView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
+    abGridView.backgroundColor = [UIColor whiteColor];
     [abGridView reloadData];
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -52,9 +53,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (NSInteger)numberOfItemsInGridView:(ABGridView *)gridView;
 {
-    return [[UserData shareUserData].images count];
+    return [images.images count];
 }
 -(UIView *)viewForItemInGridView:(ABGridView *)gridView atIndex:(NSInteger)index
 {
@@ -68,7 +70,7 @@
     {
         item = [UIImageView new];
     }
-    item.image = [UserData shareUserData].images[index];
+    item.image = images.images[index];
     item.layer.borderColor = [UIColor whiteColor].CGColor;
     item.layer.borderWidth = 3;
     
@@ -77,12 +79,10 @@
 
 - (void)gridView:(ABGridView *)gridView didSelectItemInGridView:(UIView *)view
 {
-    PhotoViewController *photoView = [PhotoViewController new];
-    photoView.image = ((UIImageView *)view).image;
-    [self.navigationController pushViewController:photoView animated:YES];
+//    PhotoViewController *photoView = [PhotoViewController new];
+//    photoView.image = ((UIImageView *)view).image;
+//    [self.navigationController pushViewController:photoView animated:YES];
 }
-
-
 
 
 @end

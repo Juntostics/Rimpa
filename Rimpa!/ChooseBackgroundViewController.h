@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UserData.h"
+#import "SWRevealViewController.h"
 
-@interface ChooseBackgroundViewController : UIViewController
+@interface ChooseBackgroundViewController : UIViewController<UIApplicationDelegate>
 -(IBAction)pushToEditor:(id)sender;
-@property (nonatomic,strong)UserData *userData;
-
+@property (strong, nonatomic) SWRevealViewController *viewController;
 @end
