@@ -109,6 +109,9 @@
 
 - (void)viewDidLoad
 {
+    //背景のロード
+    imageView.image = _backgroundImage;
+
     //boxアルファを変更するためのスライダーの設定
     sliderForBoxAlpha.minimumValue = 0;
     sliderForBoxAlpha.maximumValue = 1;
@@ -214,7 +217,7 @@
 -(IBAction)drawImageView:(id)sender
 {    
     // UIImageを指定した生成例
-    imageView.image = [UIImage imageNamed:@"rinpa2.jpg"];
+    imageView.image = _backgroundImage;
     NSLog(@"%f,%f",imageView.image.size.width,imageView.image.size.height);
     
 }

@@ -11,7 +11,7 @@
 #import "SWRevealViewController.h"
 #import "FrontViewController.h"
 #import "RearViewController.h"
-#import "RightViewController.h"
+#import "NameCardTemplateViewController.h"
 
 @interface ChooseTypeViewController ()<SWRevealViewControllerDelegate>
 {
@@ -53,26 +53,28 @@
     
     FrontViewController *frontViewController = [[FrontViewController alloc] init];
 	RearViewController *rearViewController = [[RearViewController alloc] init];
+    
 	
 	UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
 	
 	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+//    revealController.navigationController.navigationBarHidden = YES;
+//    frontViewController.navigationController.navigationBarHidden = YES;
+//    rearViewController.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;
     revealController.delegate = self;
     
-    
-    RightViewController *rightViewController = rightViewController = [[RightViewController alloc] init];
-    rightViewController.view.backgroundColor = [UIColor greenColor];
-    
-    revealController.rightViewController = rightViewController;
     
     //revealController.bounceBackOnOverdraw=NO;
     //revealController.stableDragOnOverdraw=YES;
     
 //	self.viewController = revealController;
-	
-    [self.navigationController pushViewController:revealController animated:YES];
     
+       
+
+	
+    [self.navigationController pushViewController:revealController animated:YES];    
     }
 
 @end

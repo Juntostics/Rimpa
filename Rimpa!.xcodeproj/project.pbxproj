@@ -9,20 +9,14 @@
 /* Begin PBXBuildFile section */
 		7436E3C317BAF9D7006251E9 /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3B517BAF9D7006251E9 /* RearViewController.m */; };
 		7436E3C417BAF9D7006251E9 /* RearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7436E3B617BAF9D7006251E9 /* RearViewController.xib */; };
-		7436E3C517BAF9D7006251E9 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3B917BAF9D7006251E9 /* RightViewController.m */; };
-		7436E3C617BAF9D7006251E9 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7436E3BA17BAF9D7006251E9 /* RightViewController.xib */; };
 		7436E3C717BAF9D7006251E9 /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3BC17BAF9D7006251E9 /* FrontViewController.m */; };
 		7436E3C817BAF9D7006251E9 /* FrontViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7436E3BD17BAF9D7006251E9 /* FrontViewController.xib */; };
-		7436E3C917BAF9D7006251E9 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3C017BAF9D7006251E9 /* MapViewController.m */; };
-		7436E3CA17BAF9D7006251E9 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7436E3C117BAF9D7006251E9 /* MapViewController.xib */; };
 		7436E3CD17BAFA4C006251E9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3CC17BAFA4C006251E9 /* SWRevealViewController.m */; };
 		7436E3CE17BAFAB7006251E9 /* NameCardTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449804C17BAB68D00E3C0E4 /* NameCardTemplateViewController.m */; };
 		7436E3CF17BAFE8F006251E9 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4902017B58CE300BC1D1F /* UserData.m */; };
 		7436E3D017BAFEB3006251E9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3CC17BAFA4C006251E9 /* SWRevealViewController.m */; };
 		7436E3D117BAFEB8006251E9 /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3B517BAF9D7006251E9 /* RearViewController.m */; };
-		7436E3D217BAFEBE006251E9 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3B917BAF9D7006251E9 /* RightViewController.m */; };
 		7436E3D317BAFEC4006251E9 /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3BC17BAF9D7006251E9 /* FrontViewController.m */; };
-		7436E3D417BAFECA006251E9 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3C017BAF9D7006251E9 /* MapViewController.m */; };
 		7444EA7D17B014D300BEB16F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA7C17B014D300BEB16F /* UIKit.framework */; };
 		7444EA7F17B014D300BEB16F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA7E17B014D300BEB16F /* Foundation.framework */; };
 		7444EA8117B014D300BEB16F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA8017B014D300BEB16F /* CoreGraphics.framework */; };
@@ -68,6 +62,10 @@
 		74C4902817B5B95800BC1D1F /* washi1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C4902717B5B95800BC1D1F /* washi1.jpg */; };
 		74C4902A17B5BB7700BC1D1F /* washi2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C4902917B5BB7700BC1D1F /* washi2.jpg */; };
 		74C4902D17B7F08E00BC1D1F /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4902C17B7F08E00BC1D1F /* BoxView.m */; };
+		74E32A8317BD3E130081C66D /* HorizontalPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E32A8117BD3E130081C66D /* HorizontalPosterViewController.m */; };
+		74E32A8417BD3E130081C66D /* HorizontalPosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E32A8217BD3E130081C66D /* HorizontalPosterViewController.xib */; };
+		74E32A8817BD3F040081C66D /* VerticalPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E32A8617BD3F040081C66D /* VerticalPosterViewController.m */; };
+		74E32A8917BD3F040081C66D /* VerticalPosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E32A8717BD3F040081C66D /* VerticalPosterViewController.xib */; };
 		74F4384117B01894005C3401 /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4383F17B01894005C3401 /* LandingPageController.m */; };
 		74F4384217B01894005C3401 /* LandingPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4384017B01894005C3401 /* LandingPageController.xib */; };
 		74F4384617B018B6005C3401 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4384417B018B6005C3401 /* GalleryViewController.m */; };
@@ -97,15 +95,9 @@
 		7436E3B417BAF9D7006251E9 /* RearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RearViewController.h; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RearViewController.h; sourceTree = "<group>"; };
 		7436E3B517BAF9D7006251E9 /* RearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RearViewController.m; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RearViewController.m; sourceTree = "<group>"; };
 		7436E3B717BAF9D7006251E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/en.lproj/RearViewController.xib; sourceTree = "<group>"; };
-		7436E3B817BAF9D7006251E9 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightViewController.h; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RightViewController.h; sourceTree = "<group>"; };
-		7436E3B917BAF9D7006251E9 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightViewController.m; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RightViewController.m; sourceTree = "<group>"; };
-		7436E3BA17BAF9D7006251E9 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RightViewController.xib; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RightViewController.xib; sourceTree = "<group>"; };
 		7436E3BB17BAF9D7006251E9 /* FrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontViewController.h; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/FrontViewController.h; sourceTree = "<group>"; };
 		7436E3BC17BAF9D7006251E9 /* FrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontViewController.m; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/FrontViewController.m; sourceTree = "<group>"; };
 		7436E3BE17BAF9D7006251E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/en.lproj/FrontViewController.xib; sourceTree = "<group>"; };
-		7436E3BF17BAF9D7006251E9 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/MapViewController.h; sourceTree = "<group>"; };
-		7436E3C017BAF9D7006251E9 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/MapViewController.m; sourceTree = "<group>"; };
-		7436E3C217BAF9D7006251E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/en.lproj/MapViewController.xib; sourceTree = "<group>"; };
 		7436E3CB17BAFA4C006251E9 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = ../../SWRevealViewController/SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		7436E3CC17BAFA4C006251E9 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = ../../SWRevealViewController/SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
 		7444EA7917B014D300BEB16F /* Rimpa!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rimpa!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +158,12 @@
 		74C4902917B5BB7700BC1D1F /* washi2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = washi2.jpg; sourceTree = "<group>"; };
 		74C4902B17B7F08E00BC1D1F /* BoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
 		74C4902C17B7F08E00BC1D1F /* BoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
+		74E32A8017BD3E130081C66D /* HorizontalPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalPosterViewController.h; sourceTree = "<group>"; };
+		74E32A8117BD3E130081C66D /* HorizontalPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalPosterViewController.m; sourceTree = "<group>"; };
+		74E32A8217BD3E130081C66D /* HorizontalPosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPosterViewController.xib; sourceTree = "<group>"; };
+		74E32A8517BD3F040081C66D /* VerticalPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalPosterViewController.h; sourceTree = "<group>"; };
+		74E32A8617BD3F040081C66D /* VerticalPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalPosterViewController.m; sourceTree = "<group>"; };
+		74E32A8717BD3F040081C66D /* VerticalPosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerticalPosterViewController.xib; sourceTree = "<group>"; };
 		74F4383E17B01894005C3401 /* LandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageController.h; sourceTree = "<group>"; };
 		74F4383F17B01894005C3401 /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
 		74F4384017B01894005C3401 /* LandingPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingPageController.xib; sourceTree = "<group>"; };
@@ -220,15 +218,9 @@
 				7436E3B417BAF9D7006251E9 /* RearViewController.h */,
 				7436E3B517BAF9D7006251E9 /* RearViewController.m */,
 				7436E3B617BAF9D7006251E9 /* RearViewController.xib */,
-				7436E3B817BAF9D7006251E9 /* RightViewController.h */,
-				7436E3B917BAF9D7006251E9 /* RightViewController.m */,
-				7436E3BA17BAF9D7006251E9 /* RightViewController.xib */,
 				7436E3BB17BAF9D7006251E9 /* FrontViewController.h */,
 				7436E3BC17BAF9D7006251E9 /* FrontViewController.m */,
 				7436E3BD17BAF9D7006251E9 /* FrontViewController.xib */,
-				7436E3BF17BAF9D7006251E9 /* MapViewController.h */,
-				7436E3C017BAF9D7006251E9 /* MapViewController.m */,
-				7436E3C117BAF9D7006251E9 /* MapViewController.xib */,
 			);
 			name = RevealControl;
 			sourceTree = "<group>";
@@ -346,6 +338,12 @@
 				7449804B17BAB68D00E3C0E4 /* NameCardTemplateViewController.h */,
 				7449804C17BAB68D00E3C0E4 /* NameCardTemplateViewController.m */,
 				7449804D17BAB68D00E3C0E4 /* NameCardTemplateViewController.xib */,
+				74E32A8017BD3E130081C66D /* HorizontalPosterViewController.h */,
+				74E32A8117BD3E130081C66D /* HorizontalPosterViewController.m */,
+				74E32A8217BD3E130081C66D /* HorizontalPosterViewController.xib */,
+				74E32A8517BD3F040081C66D /* VerticalPosterViewController.h */,
+				74E32A8617BD3F040081C66D /* VerticalPosterViewController.m */,
+				74E32A8717BD3F040081C66D /* VerticalPosterViewController.xib */,
 			);
 			name = templateView;
 			sourceTree = "<group>";
@@ -506,6 +504,8 @@
 				74C4902817B5B95800BC1D1F /* washi1.jpg in Resources */,
 				74C4902A17B5BB7700BC1D1F /* washi2.jpg in Resources */,
 				7449804F17BAB68D00E3C0E4 /* NameCardTemplateViewController.xib in Resources */,
+				74E32A8417BD3E130081C66D /* HorizontalPosterViewController.xib in Resources */,
+				74E32A8917BD3F040081C66D /* VerticalPosterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,9 +515,7 @@
 			files = (
 				7444EAA517B014D400BEB16F /* InfoPlist.strings in Resources */,
 				7436E3C417BAF9D7006251E9 /* RearViewController.xib in Resources */,
-				7436E3C617BAF9D7006251E9 /* RightViewController.xib in Resources */,
 				7436E3C817BAF9D7006251E9 /* FrontViewController.xib in Resources */,
-				7436E3CA17BAF9D7006251E9 /* MapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,9 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7436E3D417BAFECA006251E9 /* MapViewController.m in Sources */,
 				7436E3D317BAFEC4006251E9 /* FrontViewController.m in Sources */,
-				7436E3D217BAFEBE006251E9 /* RightViewController.m in Sources */,
 				7436E3D117BAFEB8006251E9 /* RearViewController.m in Sources */,
 				7436E3D017BAFEB3006251E9 /* SWRevealViewController.m in Sources */,
 				7449802617B9491F00E3C0E4 /* SPUserResizableView.m in Sources */,
@@ -568,6 +564,8 @@
 				7449802917B95F6C00E3C0E4 /* ResizableBoxView.m in Sources */,
 				7449802C17B9978E00E3C0E4 /* DataForSaving.m in Sources */,
 				7449804E17BAB68D00E3C0E4 /* NameCardTemplateViewController.m in Sources */,
+				74E32A8317BD3E130081C66D /* HorizontalPosterViewController.m in Sources */,
+				74E32A8817BD3F040081C66D /* VerticalPosterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,9 +579,7 @@
 				7444EAA817B014D400BEB16F /* Rimpa_Tests.m in Sources */,
 				74C4900017B557C700BC1D1F /* ABGridView.m in Sources */,
 				7449802517B9480E00E3C0E4 /* SPUserResizableView.m in Sources */,
-				7436E3C517BAF9D7006251E9 /* RightViewController.m in Sources */,
 				7436E3C717BAF9D7006251E9 /* FrontViewController.m in Sources */,
-				7436E3C917BAF9D7006251E9 /* MapViewController.m in Sources */,
 				7436E3CD17BAFA4C006251E9 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,14 +609,6 @@
 				7436E3BE17BAF9D7006251E9 /* en */,
 			);
 			name = FrontViewController.xib;
-			sourceTree = "<group>";
-		};
-		7436E3C117BAF9D7006251E9 /* MapViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7436E3C217BAF9D7006251E9 /* en */,
-			);
-			name = MapViewController.xib;
 			sourceTree = "<group>";
 		};
 		7444EA8517B014D300BEB16F /* InfoPlist.strings */ = {

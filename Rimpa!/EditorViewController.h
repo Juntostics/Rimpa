@@ -20,5 +20,6 @@
 -(void)moveLabelToPoint:(CGPoint)currentPoint;
 
 - (void)checkTapTime:(NSTimer *)timer;
+@property (nonatomic,strong) UIImage *backgroundImage;
 
 @end
