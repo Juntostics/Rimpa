@@ -32,6 +32,7 @@
     imageView.image = _image;
     imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.width);
     NSLog(@"%f,%f",imageView.image.size.width,imageView.image.size.height);
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     // Do any additional setup after loading the view from its nib.
 }

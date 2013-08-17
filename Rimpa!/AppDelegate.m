@@ -9,8 +9,12 @@
 #import "AppDelegate.h"
 #import "LandingPageController.h"
 #import "UserData.h"
+#import "SWRevealViewController.h"
+#import "RearViewController.h"
+#import "FrontViewController.h"
+#import "GalleryViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<SWRevealViewControllerDelegate>
 {
 }
 
@@ -25,16 +29,25 @@
     [[UserData shareUserData] load];
     NSLog(@"%d",[[UserData shareUserData].userDataList count]);
     
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.window = window;
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    LandingPageController *landingPageController = [LandingPageController new];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:landingPageController];
-    self.window.rootViewController = navigationController;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-
-    return YES;
+    GalleryViewController *galleryViewControlleer = [[GalleryViewController alloc] init];
+	RearViewController *rearViewController = [[RearViewController alloc] init];
+    
+    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:galleryViewControlleer];
+    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+    
+    SWRevealViewController *mainRevealController = [[SWRevealViewController alloc]
+                                                    initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+    
+    mainRevealController.delegate = self;
+    
+	self.viewController = mainRevealController;
+	
+	self.window.rootViewController = self.viewController;
+	[self.window makeKeyAndVisible];
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

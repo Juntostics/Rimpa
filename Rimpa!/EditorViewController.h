@@ -11,15 +11,15 @@
 #import "BoxView.h"
 #import "SPUserResizableView.h"
 
-@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,BoxViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate>
+@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate>
 {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
 
 }
--(void)moveLabelToPoint:(CGPoint)currentPoint;
+//-(void)moveLabelToPoint:(CGPoint)currentPoint;
 
-- (void)checkTapTime:(NSTimer *)timer;
+//- (void)checkTapTime:(NSTimer *)timer;
 @property (nonatomic,strong) UIImage *backgroundImage;
 
 @end

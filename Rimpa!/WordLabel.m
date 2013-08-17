@@ -63,6 +63,7 @@
     [self addGestureRecognizer:pan];
     self.backgroundColor = [UIColor clearColor];
     self.userInteractionEnabled = YES;
+    self.textAlignment = NSTextAlignmentCenter;
 //    self.numberOfLines =0;
 //    self.lineBreakMode = NO;
 }
@@ -70,6 +71,8 @@
 - (void)_init{
     self.backgroundColor = [UIColor clearColor];
     self.userInteractionEnabled = YES;
+    self.textAlignment = NSTextAlignmentCenter;
+
 //    self.numberOfLines =0;
 //    self.lineBreakMode = NO;
 

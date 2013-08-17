@@ -38,16 +38,17 @@
 
 - (void)viewDidLoad
 {
-    
+    //new galleryimages
+    images = [GalleryImages new];
     
     //set bacgroundcolor on view
-    UIImage *backgroundimage = [UIImage imageNamed:@"washi2.jpg"];
+    //UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
     
     //add abgridview
     [self.view addSubview:abGridView];
     [abGridView setDelegate:self];
     abGridView.itemSize = CGSizeMake(300, 150);
-    abGridView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
+    //abGridView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     [abGridView reloadData];
     [super viewDidLoad];
     
@@ -60,15 +61,7 @@
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
-    UIBarButtonItem *backbtn =
-    [[UIBarButtonItem alloc]
-     initWithBarButtonSystemItem:UIBarButtonSystemItemReply // スタイルを指定
-     target:self  // デリゲートのターゲットを指定
-     action:@selector(moveBack:)  // ボタンが押されたときに呼ばれるメソッドを指定
-     ];
-    
-    self.navigationItem.rightBarButtonItem = backbtn;
-    
+   
 
     
     // Do any additional setup after loading the view from its nib.
@@ -82,7 +75,7 @@
 
 - (NSInteger)numberOfItemsInGridView:(ABGridView *)gridView;
 {
-    return [[UserData shareUserData].images count];
+    return [images.nameCardImages count];
 }
 -(UIView *)viewForItemInGridView:(ABGridView *)gridView atIndex:(NSInteger)index
 {
@@ -96,7 +89,7 @@
     {
         item = [UIImageView new];
     }
-    item.image = [UserData shareUserData].images[index];
+    item.image = images.nameCardImages[index];
     item.layer.borderColor = [UIColor whiteColor].CGColor;
     item.layer.borderWidth = 3;
     
@@ -114,9 +107,5 @@
     [self.navigationController pushViewController:editor animated:YES];
     
 }
-
-
-
-
 
 @end

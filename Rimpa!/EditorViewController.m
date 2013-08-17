@@ -9,7 +9,6 @@
 #import "EditorViewController.h"
 #import "ViewUtils.h"
 #import "WordLabel.h"
-#import "BoxView.h"
 #import "TemporaryProductViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UserData.h"
@@ -24,7 +23,7 @@
     IBOutlet UISlider *sliderForBoxAlpha;
     IBOutlet UIImageView *imageView;
     IBOutlet UITextView *textView;
-    IBOutlet UITableView *tableView;
+    IBOutlet UITableView *fontTableView;
     IBOutlet UITableView *colorTableView;
     NSMutableArray *labelList;
     NSMutableArray *boxList;
@@ -39,7 +38,8 @@
     CGRect defaultTableViewFrame;
     UIImage *image;
     id nowForcusingOn;
-    
+    BOOL fontTableViewIsHidden;
+    BOOL colorTableViewIsHidden;
 }
 
 @end
@@ -66,6 +66,7 @@
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+
     if(tableView1.tag ==0){
         NSString *fontfamilyname = [fontFamilyNames objectAtIndex:indexPath.row];
         NSArray *fontNames = [UIFont fontNamesForFamilyName:fontfamilyname];
@@ -78,23 +79,30 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView1 willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView1.tag==1) {
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.tag==1) {
         cell.backgroundColor = [colors objectAtIndex:indexPath.row];
     }
 
 }
 
--(void)tableView:(UITableView *)tableView1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView1 cellForRowAtIndexPath:indexPath];
-    if(tableView1.tag ==0){
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if(tableView.tag ==0){
         NSArray *fontNames = [UIFont fontNamesForFamilyName:cell.textLabel.text];
         touchedLabel.font = [UIFont fontWithName:fontNames.lastObject size:touchedLabel.font.pointSize];
-        [self slideTableViewToleft:tableView1];
+        [self forcusingLabel:touchedLabel];
+        [touchedLabel sizeToFit];
+//        [self slideTableViewToleft:tableView];
+//        fontTableViewIsHidden=YES;
     }else{
         touchedLabel.textColor = [colors objectAtIndex:indexPath.row];
-        [self slideTableViewToRight:tableView1];
+        [self forcusingLabel:touchedLabel];
+//        [self slideTableViewToRight:tableView];
+//        colorTableViewIsHidden=YES;
     }
 }
 
@@ -111,6 +119,8 @@
 {
     //背景のロード
     imageView.image = _backgroundImage;
+    //アスペクト比を保ちつつ最大の大きさで表示
+    imageView.contentMode=UIViewContentModeScaleAspectFit;
 
     //boxアルファを変更するためのスライダーの設定
     sliderForBoxAlpha.minimumValue = 0;
@@ -126,17 +136,11 @@
                action:@selector(slider_ValueChanged:)
      forControlEvents:UIControlEventValueChanged];
     
-    
-    
-    
     //ボックスからフォーカスを外すためのパンジェスチャー
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEditingHandles)];
     [gestureRecognizer setDelegate:self];
-    [self.view addGestureRecognizer:gestureRecognizer];
+    [imageView addGestureRecognizer:gestureRecognizer];
 
-    
-    
-    
     //color配列の初期化
     colors =
     [NSArray arrayWithObjects:[UIColor blackColor],[UIColor blueColor],
@@ -149,18 +153,30 @@
     //fontの配列を取得
     fontFamilyNames = [UIFont familyNames];
     //tableViewの初期化
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
+    fontTableView.delegate = self;
+    fontTableView.dataSource = self;
+    fontTableView.allowsSelectionDuringEditing = YES;
+    fontTableViewIsHidden = NO;
     //colorTableViewの初期化
     colorTableView.delegate = self;
     colorTableView.dataSource = self;
-    [self.view addSubview:colorTableView];
+    colorTableView.allowsSelectionDuringEditing = YES;
+    colorTableViewIsHidden = NO;
+    
+    [fontTableView reloadData];
+    [colorTableView reloadData];
     //tableViewの初期位置をゲット
-    defaultTableViewFrame = tableView.frame;
+    defaultTableViewFrame = fontTableView.frame;
+    
     //テーブルビューを初期位置に移動させる
-    [self slideTableViewToleft:tableView];
-    [self slideTableViewToRight:colorTableView];
+    if (!fontTableViewIsHidden) {
+        [self slideTableViewToleft:fontTableView];
+        fontTableViewIsHidden=YES;
+    }
+    if (!colorTableViewIsHidden) {
+        [self slideTableViewToRight:colorTableView];
+        colorTableViewIsHidden=YES;
+    }
     
     //wordLabelを入れる配列を生成
     labelList = [NSMutableArray array];
@@ -183,7 +199,7 @@
     // ボタンを作成する。
     UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     closeButton.frame = CGRectMake(210,10,100,30);
-    [closeButton setTitle:@"閉じる" forState:UIControlStateNormal];
+    [closeButton setTitle:@"close" forState:UIControlStateNormal];
     // ボタンを押したときによばれる動作を設定する。
     [closeButton addTarget:self action:@selector(closeKeyboard:) forControlEvents:UIControlEventTouchUpInside];
     // ボタンをViewに貼る
@@ -206,6 +222,8 @@
     for (WordLabel *label in labelList) {
         [label setAlpha:1];
     }
+    [self forcusingLabel:touchedLabel];
+    [touchedLabel sizeToFit];
 }
 
 - (void)didReceiveMemoryWarning
@@ -229,18 +247,19 @@
     label.text = @"input text.";
     [labelList addObject:label];
     [imageView addSubview:label];
-    [imageView bringSubviewToFront:label];
+    //[imageView bringSubviewToFront:label];
     initialPositionForLabel += 25;
     label.delegate = self;
+    
 }
 
 -(IBAction)generateBox:(id)sender
 {
     CGRect gripFrame = CGRectMake(50, 50, 200, 150);
     ResizableBoxView *userResizableView = [[ResizableBoxView alloc] initWithFrame:gripFrame];
-    userResizableView.backgroundColor = [UIColor clearColor];
+    userResizableView.backgroundColor = [UIColor grayColor];
     UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    [contentView setBackgroundColor:[UIColor grayColor]];
+    [contentView setBackgroundColor:[UIColor clearColor]];
     userResizableView.contentView = contentView;
     userResizableView.delegate = self;
     [userResizableView showEditingHandles];
@@ -257,12 +276,14 @@
     UIFont *font = touchedLabel.font;
     touchedLabel.font = [font fontWithSize:font.pointSize + 2];
     [touchedLabel sizeToFit];
+    [self forcusingLabel:touchedLabel];
 }
 
 -(IBAction)beSmaller:(id)sender{
     UIFont *font = touchedLabel.font;
     touchedLabel.font = [font fontWithSize:font.pointSize - 2];
     [touchedLabel sizeToFit];
+    [self forcusingLabel:touchedLabel];
 }
 
 
@@ -278,36 +299,42 @@
     // これを行わないと、[sender translationInView:]が返す距離は、ドラッグが始まってからの蓄積値となるため、
     // 今回のようなドラッグに合わせてImageを動かしたい場合には、蓄積値をゼロにする
     [sender setTranslation:CGPointZero inView:self.view];
+    [self forcusingLabel:(WordLabel*)sender.view];
 
 }
 
 - (void)handleSingleTapForLabel:(UITapGestureRecognizer *)sender
 {
-    touchedLabel = nil;
-
+    [self releasingLabel:touchedLabel];
     for(WordLabel *label in labelList){
         [label releasedNow];
     }
     
     touchedLabel = (WordLabel *)sender.view;
-    [touchedLabel forcusedNow];
+    [self forcusingLabel:touchedLabel];
 }
 
+- (void)forcusingLabel:(WordLabel *)label
+{
+    touchedLabel = label;
+    [label forcusedNow];
+}
 
+- (void)releasingLabel:(WordLabel *)label
+{
+    [label releasedNow];
+    touchedLabel = nil;
+}
 
 - (void)handleDoubleTapForLabel:(UITapGestureRecognizer *)sender
 {
     
-    touchedLabel = nil;
-    
+    [self releasingLabel:touchedLabel];
     for(WordLabel *label in labelList){
         [label releasedNow];
     }
-    
     touchedLabel = (WordLabel *)sender.view;
-    [touchedLabel forcusedNow];
-    
-    
+//
     //入力モードにするためtextfield以外を消して,labelのテキストをtextfieldを出現させる
     [textView becomeFirstResponder];
     [textView setText:touchedLabel.text];
@@ -318,18 +345,24 @@
 }
 
 -(IBAction)slideToRightFontBar:(id)sender{
-    [self slideTableViewToRight:tableView];
+    if(fontTableViewIsHidden){
+        [self slideTableViewToRight:fontTableView];
+        fontTableViewIsHidden=NO;
+    }
 }
 
--(IBAction)slideToLeftFontBar:(id)sender
+-(IBAction)slideToLeftColorBar:(id)sender
 {
+    if (colorTableViewIsHidden) {
     [self slideTableViewToleft:colorTableView];
+        colorTableViewIsHidden=NO;
+    }
 }
 
 -(void)slideTableViewToRight:(UITableView*)tbView
 {
     [UIView animateWithDuration:0.3 animations:^(void){
-        CGRect temprect = tableView.frame;
+        CGRect temprect = fontTableView.frame;
         temprect.origin.x = tbView.frame.origin.x + defaultTableViewFrame.size.width;
         tbView.frame = temprect;
     }];
@@ -338,7 +371,7 @@
 -(void)slideTableViewToleft:(UITableView*)tbView
 {
     [UIView animateWithDuration:0.3 animations:^(void){
-        CGRect temprect = tableView.frame;
+        CGRect temprect = fontTableView.frame;
         temprect.origin.x = tbView.frame.origin.x - defaultTableViewFrame.size.width;
         tbView.frame = temprect;
     }];
@@ -350,6 +383,7 @@
     [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *bitmap = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
     TemporaryProductViewController *temporaryViewController =  [TemporaryProductViewController new];
     temporaryViewController.image = bitmap;
     
@@ -359,19 +393,15 @@
     [[UserData shareUserData] save];
     NSLog(@"%d",[[UserData shareUserData].userDataList count]);
 
-    
-    
     [self.navigationController pushViewController:temporaryViewController animated:YES];
 }
 
 -(IBAction)deleteLabel:(id)sender
 {
-    
     [labelList removeObject:touchedLabel];
     [touchedLabel removeFromSuperview];
     touchedLabel = nil;
 }
-
 
 - (void)userResizableViewDidBeginEditing:(SPUserResizableView *)userResizableView {
     [currentlyEditingView hideEditingHandles];
@@ -393,6 +423,20 @@
     // We only want the gesture recognizer to end the editing session on the last
     // edited view. We wouldn't want to dismiss an editing session in progress.
     [lastEditedView hideEditingHandles];
+    
+    //touchlabelを空にする
+    [touchedLabel releasedNow];
+    touchedLabel = NULL;
+    
+    //テーブルをなおす
+    if (!fontTableViewIsHidden) {
+        [self slideTableViewToleft:fontTableView];
+        fontTableViewIsHidden=YES;
+    }
+    if (!colorTableViewIsHidden) {
+        [self slideTableViewToRight:colorTableView];
+        colorTableViewIsHidden=YES;
+    }
 }
 
 -(IBAction)deleteBox:(id)sender{

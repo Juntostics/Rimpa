@@ -10,5 +10,8 @@
 
 @interface GalleryImages : NSObject
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic,strong)NSArray *nameCardImages;
+@property (nonatomic,strong)NSArray *horizontalPosterImages;
+@property (nonatomic,strong)NSArray *verticalPosterImages;
 
 @end

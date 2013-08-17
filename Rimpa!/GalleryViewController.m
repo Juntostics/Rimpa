@@ -11,6 +11,7 @@
 #import "UserData.h"
 #import "PhotoViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SWRevealViewController.h"
 @interface GalleryViewController ()<ABGridViewDelegate>
 {
     IBOutlet ABGridView *abGridView;
@@ -31,17 +32,28 @@
 
 - (void)viewDidLoad
 {
-    
+
     //set bacgroundcolor on view
-    UIImage *backgroundimage = [UIImage imageNamed:@"washi2.jpg"];
+    //UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
    
     //add abgridview
     [self.view addSubview:abGridView];
     [abGridView setDelegate:self];
     abGridView.itemSize = CGSizeMake(300, 150);
-    abGridView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
+    //abGridView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     [abGridView reloadData];
     [super viewDidLoad];
+    
+    
+    SWRevealViewController *revealController = [self revealViewController];
+    
+    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
+    
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
+                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    
+    self.navigationItem.leftBarButtonItem = revealButtonItem;
+
     
     // Do any additional setup after loading the view from its nib.
 }

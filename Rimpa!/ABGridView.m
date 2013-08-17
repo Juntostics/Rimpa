@@ -73,7 +73,7 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.bounces                        = YES;
     self.scrollView.delegate                       = self;
-    UIImage *backgroundimage = [UIImage imageNamed:@"washi2.jpg"];
+    UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
     self.scrollView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     [self addSubview:self.scrollView];
 
@@ -227,7 +227,7 @@
         // check, bouncing will behave incorrectly.
         _scrollView.frame = self.bounds;
     }
-	
+	//------------------------------------------------------edited by Junto
     _colCount = floorf( ( self.bounds.size.width - _contentInsets.left - _contentInsets.right ) / _itemSize.width );
 	
     while( 1 )
@@ -240,6 +240,7 @@
 	
     _rowCount = ( _itemCount + _colCount - 1 ) / _colCount;
     _rowGap   = _colGap;
+    
 	
     _effectiveInsets = UIEdgeInsetsMake( _contentInsets.top    + _rowGap,
                                          _contentInsets.left   + _colGap,

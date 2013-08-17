@@ -10,5 +10,5 @@
 
 @interface PhotoViewController : UIViewController
 @property(nonatomic,strong) UIImage *image;
-
+@property(nonatomic,strong) NSNumber *num;
 @end
