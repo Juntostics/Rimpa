@@ -419,7 +419,6 @@
 		74F4385B17B045D0005C3401 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				74B5F13C17BEDB63006E3FA6 /* background3.jpg */,
 				74B5F13A17BEDB54006E3FA6 /* background.jpg */,
 				74B5F12417BED8EB006E3FA6 /* rinpa27.jpg */,
 				74B5F12517BED8EB006E3FA6 /* rinpa26.jpg */,
@@ -427,6 +426,7 @@
 				74B5F12717BED8EB006E3FA6 /* rinpa24.jpeg */,
 				74B5F12817BED8EB006E3FA6 /* rinpa23.jpg */,
 				74B5F12917BED8EB006E3FA6 /* rinpa22.jpg */,
+				74B5F13C17BEDB63006E3FA6 /* background3.jpg */,
 				74B5F12A17BED8EB006E3FA6 /* rinpa21.jpg */,
 				74B5F12B17BED8EB006E3FA6 /* rinpa20.jpg */,
 				74B5F12C17BED8EB006E3FA6 /* rinpa19.jpg */,

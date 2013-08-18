@@ -13,6 +13,7 @@
 @interface UserData()
 {
     GalleryImages *galleryImages;
+    NSDictionary *userDataDictionary;
 }
 @end
 
@@ -45,6 +46,7 @@ static UserData* _sharedInstance = nil;
     galleryImages = [GalleryImages new];
     _userDataList = [NSMutableArray array];
     _images = [NSMutableArray arrayWithArray:galleryImages.images];
+    
 }
 
 

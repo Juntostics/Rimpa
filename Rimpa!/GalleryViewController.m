@@ -32,6 +32,19 @@
 
 - (void)viewDidLoad
 {
+    //navigationbar setting
+    //self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+  //  self.navigationController.navigationBar.translucent = YES;
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithWhite:100 alpha:0.1]];
+    [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
+
+
+    // ツールバーを半透明に（selfはUIViewController）
+    self.navigationController.toolbar.barStyle = UIBarStyleBlack;
+    self.navigationController.toolbar.translucent = YES;
+    
+    // ちなみにステータスバーは、これまでどおりでＯＫ
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
 
     //set bacgroundcolor on view
     //UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
@@ -82,7 +95,7 @@
     }
     item.image = [UserData shareUserData].images[index];
     item.layer.borderColor = [UIColor whiteColor].CGColor;
-    item.layer.borderWidth = 3;
+    item.layer.borderWidth =1;
     
     return item;
 }
@@ -91,6 +104,8 @@
 {
     PhotoViewController *photoView = [PhotoViewController new];
     photoView.image = ((UIImageView *)view).image;
+    
+    
     [self.navigationController pushViewController:photoView animated:YES];
 }
 
