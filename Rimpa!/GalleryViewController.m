@@ -30,13 +30,37 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    if(_haveAThingToDelete){
+        [[UserData shareUserData] removeUserData:[_deleteNum integerValue]];
+        NSLog(@"datacount:%lu",(unsigned long)[[UserData shareUserData].userDataList count]);
+        [abGridView reloadData];
+        [[UserData shareUserData] save];
+        
+    }
+    _haveAThingToDelete = NO;
+
+}
+
 - (void)viewDidLoad
 {
+    //delete data
+    if(_haveAThingToDelete){
+        [[UserData shareUserData] removeUserData:[_deleteNum integerValue]];
+        NSLog(@"datacount:%lu",(unsigned long)[[UserData shareUserData].userDataList count]);
+        [abGridView reloadData];
+        [[UserData shareUserData] save];
+
+    }
+    _haveAThingToDelete = NO;
+    
     //navigationbar setting
     //self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
   //  self.navigationController.navigationBar.translucent = YES;
     [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithWhite:100 alpha:0.1]];
-    [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor clearColor]];
 
 
     // ツールバーを半透明に（selfはUIViewController）
@@ -104,6 +128,7 @@
 {
     PhotoViewController *photoView = [PhotoViewController new];
     photoView.image = ((UIImageView *)view).image;
+    
     
     
     [self.navigationController pushViewController:photoView animated:YES];

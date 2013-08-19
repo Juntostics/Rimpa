@@ -12,4 +12,6 @@
 @interface GalleryViewController : UIViewController
 {
 }
+@property (nonatomic) BOOL haveAThingToDelete;
+@property (nonatomic,strong) NSNumber* deleteNum;
 @end

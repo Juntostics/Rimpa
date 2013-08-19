@@ -10,8 +10,9 @@
 #import "WordLabel.h"
 #import "BoxView.h"
 #import "SPUserResizableView.h"
+#import "ALRadialMenu.h"
 
-@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate>
+@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate,ALRadialMenuDelegate>
 {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
@@ -20,6 +21,16 @@
 //-(void)moveLabelToPoint:(CGPoint)currentPoint;
 
 //- (void)checkTapTime:(NSTimer *)timer;
+
+- (IBAction)buttonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *textButton;
+@property (weak, nonatomic) IBOutlet UIButton *boxButton;
+
+@property (strong, nonatomic) ALRadialMenu *textMenu;
+@property (strong, nonatomic) ALRadialMenu *boxMenu;
+
+@property (strong, nonatomic) NSArray *popups;
+
 @property (nonatomic,strong) UIImage *backgroundImage;
 
 @end

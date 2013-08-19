@@ -46,6 +46,7 @@ static UserData* _sharedInstance = nil;
     galleryImages = [GalleryImages new];
     _userDataList = [NSMutableArray array];
     _images = [NSMutableArray arrayWithArray:galleryImages.images];
+    _galleryImageCount = [[NSNumber alloc]initWithInteger:[galleryImages.images count]];
     
 }
 
@@ -105,9 +106,12 @@ static UserData* _sharedInstance = nil;
     [_userDataList insertObject:data atIndex:toIndex];
 }
 
-- (void)removeUserData:(DataForSaving *)data {
-    // 指定されたpdfを削除
+- (void)removeUserData:(NSUInteger)index {
+
+    DataForSaving *data = [_userDataList objectAtIndex:index-[galleryImages.images count]];
+    NSLog(@"%d,%d,%d,%d",index,[_userDataList count],[_images count],[galleryImages.images count]);
     [_userDataList removeObject:data];
+    [_images removeObjectAtIndex:index];
     
     // ファイル自体を削除する
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -187,7 +191,7 @@ static UserData* _sharedInstance = nil;
     // チャンネルの配列を保存する
     NSString*   filePath;
     filePath = [self _makePath];
-    NSLog(@"%@", filePath);
+//    NSLog(@"%@", filePath);
     [NSKeyedArchiver archiveRootObject:_userDataList toFile:filePath];
 }
 

@@ -117,6 +117,18 @@
 
 - (void)viewDidLoad
 {
+    //ALradiusボタンの初期化
+    //create an instance of the radial menu and set ourselves as the delegate.
+	self.textMenu = [[ALRadialMenu alloc] init];
+    self.textMenu.startRadius = 180;
+	self.textMenu.delegate = self;
+	
+	self.boxMenu = [[ALRadialMenu alloc] init];
+    self.boxMenu.startRadius = 180;
+	self.boxMenu.delegate = self;
+
+    
+    
     //背景のロード
     imageView.image = _backgroundImage;
     //アスペクト比を保ちつつ最大の大きさで表示
@@ -208,6 +220,154 @@
     //---------------------------
 }
 
+
+//ALRadiusボタン
+- (IBAction)buttonPressed:(id)sender {
+	//the button that brings the items into view was pressed
+	if (sender == self.textButton) {
+		[self.textMenu buttonsWillAnimateFromButton:sender withFrame:self.textButton.frame inView:self.view];
+	} else if (sender == self.boxButton) {
+		[self.boxMenu buttonsWillAnimateFromButton:sender withFrame:self.boxButton.frame inView:self.view];
+	}
+}
+
+
+#pragma mark - radial menu delegate methods
+- (NSInteger) numberOfItemsInRadialMenu:(ALRadialMenu *)radialMenu {
+	//FIXME: dipshit, change one of these variable names
+	if (radialMenu == self.textMenu) {
+		return 5;
+	} else if (radialMenu == self.boxMenu) {
+		return 4;
+	}
+	
+	return 0;
+}
+
+
+- (NSInteger) arcSizeForRadialMenu:(ALRadialMenu *)radialMenu {
+	if (radialMenu == self.textMenu) {
+		return 180;
+	} else if (radialMenu == self.boxMenu) {
+		return 180;
+	}
+	
+	return 0;
+}
+
+
+- (NSInteger) arcRadiusForRadialMenu:(ALRadialMenu *)radialMenu {
+	if (radialMenu == self.textMenu) {
+		return 80;
+	} else if (radialMenu == self.boxMenu) {
+		return 80;
+	}
+	
+	return 0;
+}
+
+
+- (UIImage *) radialMenu:(ALRadialMenu *)radialMenu imageForIndex:(NSInteger) index {
+	if (radialMenu == self.textMenu) {
+		if (index == 1) {
+			return [UIImage imageNamed:@"fonticon.png"];
+		} else if (index == 2) {
+			return [UIImage imageNamed:@"fontsizeicon.png"];
+		} else if (index == 3) {
+			return [UIImage imageNamed:@"coloricon.jpg"];
+		} else if (index == 4) {
+			return [UIImage imageNamed:@"addthis500.png"];
+		} else if (index == 5) {
+			return [UIImage imageNamed:@"deleteicon.png"];
+		}
+        
+	} else if (radialMenu == self.boxMenu) {
+		if (index == 1) {
+			return [UIImage imageNamed:@"opacityicon.jpg"];
+		} else if (index == 2) {
+			return [UIImage imageNamed:@"coloricon.jpg"];
+		} else if (index == 3) {
+			return [UIImage imageNamed:@"addthis500.png"];
+		}else if (index == 4) {
+			return [UIImage imageNamed:@"deleteicon.png"];
+		}
+	}
+	
+	return nil;
+}
+
+
+- (void) radialMenu:(ALRadialMenu *)radialMenu didSelectItemAtIndex:(NSInteger)index {
+	if (radialMenu == self.textMenu) {
+		[self.textMenu itemsWillDisapearIntoButton:self.textButton];
+        if (index == 1) {
+            //-------------------------------slide font bar
+            if(fontTableViewIsHidden){
+                [self slideTableViewToRight:fontTableView];
+                fontTableViewIsHidden=NO;
+            }
+        } else if (index == 2) {
+			//--------------------------------change size of word
+		} else if (index == 3) {
+            //-------------------------------slide color bar
+            if (colorTableViewIsHidden) {
+                [self slideTableViewToleft:colorTableView];
+                colorTableViewIsHidden=NO;
+            }
+		} else if (index == 4) {
+            //-------------------------------generate wordlabel
+            WordLabel *label = [WordLabel new];
+            label.frame = CGRectMake(100+initialPositionForLabel, 100+initialPositionForLabel, 100, 50);
+            label.text = @"input text.";
+            [labelList addObject:label];
+            [imageView addSubview:label];
+            //[imageView bringSubviewToFront:label];
+            initialPositionForLabel += 25;
+            label.delegate = self;
+        } else if (index == 5) {
+            //--------------------------------delete word label
+            [labelList removeObject:touchedLabel];
+            [touchedLabel removeFromSuperview];
+            touchedLabel = nil;
+        }
+        
+	} else if (radialMenu == self.boxMenu) {
+		[self.boxMenu itemsWillDisapearIntoButton:self.boxButton];
+		if (index == 1) {
+            //--------------------------------change opacity of box
+		} else if (index == 2) {
+			//--------------------------------change color
+		} else if (index == 3) {
+            //--------------------------------generate box
+            CGRect gripFrame = CGRectMake(50, 50, 200, 150);
+            ResizableBoxView *userResizableView = [[ResizableBoxView alloc] initWithFrame:gripFrame];
+            userResizableView.backgroundColor = [UIColor grayColor];
+            UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+            [contentView setBackgroundColor:[UIColor clearColor]];
+            userResizableView.contentView = contentView;
+            userResizableView.delegate = self;
+            [userResizableView showEditingHandles];
+            userResizableView.alpha = 0.5;
+            currentlyEditingView = userResizableView;
+            lastEditedView = userResizableView;
+            [imageView addSubview:userResizableView];
+            [imageView sendSubviewToBack:userResizableView];
+            
+            [boxList addObject:userResizableView];
+		} else if (index == 4) {
+            //--------------------------------delete box
+            [boxList removeObject:currentlyEditingView];
+            [currentlyEditingView removeFromSuperview];
+            currentlyEditingView = lastEditedView;
+        }
+	}
+    
+}
+
+
+
+
+
 - (void)slider_ValueChanged:(id)sender
 {
     UISlider *slider = sender;
@@ -235,9 +395,7 @@
 -(IBAction)drawImageView:(id)sender
 {    
     // UIImageを指定した生成例
-    imageView.image = _backgroundImage;
-    NSLog(@"%f,%f",imageView.image.size.width,imageView.image.size.height);
-    
+    imageView.image = _backgroundImage;    
 }
 -(IBAction)generateLabel:(id)sender
 {
@@ -391,8 +549,6 @@
     DataForSaving *data = [[DataForSaving alloc] initWithMakingData:@"rinpa2.jpg" label:labelList box:boxList product:bitmap];
     [[UserData shareUserData] addData:data];
     [[UserData shareUserData] save];
-    NSLog(@"%d",[[UserData shareUserData].userDataList count]);
-
     [self.navigationController pushViewController:temporaryViewController animated:YES];
 }
 

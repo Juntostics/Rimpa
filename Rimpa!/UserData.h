@@ -15,11 +15,13 @@
 }
 
 @property (nonatomic,strong) NSMutableArray *images;
-@property (nonatomic, readonly) NSArray* userDataList; // 参照のときはMutableでないもの
+@property (nonatomic, readonly) NSArray *userDataList; // 参照のときはMutableでないもの
+@property(nonatomic,strong)NSNumber *galleryImageCount;
 
 + (UserData *)shareUserData;
 
 - (void)addData:(DataForSaving *)data;
+- (void)removeUserData:(NSUInteger)index;
 
 // 永続化
 - (void)load;

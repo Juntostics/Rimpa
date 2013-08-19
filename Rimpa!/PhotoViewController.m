@@ -8,10 +8,13 @@
 
 #import "PhotoViewController.h"
 #import <Social/Social.h>
+#import "UserData.h"
+#import "GLDemoViewController.h"
 
 @interface PhotoViewController ()
 {
     IBOutlet UIImageView *imageView;
+    IBOutlet UIButton *deleteButton;
     
 }
 
@@ -30,6 +33,9 @@
 
 - (void)viewDidLoad
 {
+    if (_index < [UserData shareUserData].galleryImageCount) {
+        deleteButton.hidden = YES;
+    }
     imageView.image = _image;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
 
@@ -66,6 +72,14 @@
     [self presentViewController:facebookPostVC animated:YES completion:nil];
 }
 
+
+- (IBAction)deleteImagesAndMoveToGallery:(id)sender
+{
+    GLDemoViewController *gvc = (GLDemoViewController*)[self.navigationController.viewControllers objectAtIndex:0];
+    gvc.deleteNum = _index;
+    gvc.haveAThingToDelete = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)moveToEdit:(id)sender
 {

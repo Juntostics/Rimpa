@@ -12,7 +12,7 @@
 #import "SWRevealViewController.h"
 #import "RearViewController.h"
 #import "FrontViewController.h"
-#import "GalleryViewController.h"
+#import "GLDemoViewController.h"
 
 @interface AppDelegate ()<SWRevealViewControllerDelegate>
 {
@@ -27,15 +27,13 @@
 {
     //load
     [[UserData shareUserData] load];
-    NSLog(@"%d",[[UserData shareUserData].userDataList count]);
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window = window;
     
-    GalleryViewController *galleryViewControlleer = [[GalleryViewController alloc] init];
-	RearViewController *rearViewController = [[RearViewController alloc] init];
+    GLDemoViewController* GLviewController = [[GLDemoViewController alloc] initWithNibName:nil bundle:nil];	RearViewController *rearViewController = [[RearViewController alloc] init];
     
-    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:galleryViewControlleer];
+    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:GLviewController];
     UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
     
     SWRevealViewController *mainRevealController = [[SWRevealViewController alloc]
