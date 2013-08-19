@@ -33,4 +33,7 @@
 
 @property (nonatomic,strong) UIImage *backgroundImage;
 
+
+
+- (void)hiddenTableView:(UITableView *)tableView;
 @end

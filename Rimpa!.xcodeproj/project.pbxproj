@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7436E3C317BAF9D7006251E9 /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3B517BAF9D7006251E9 /* RearViewController.m */; };
-		7436E3C717BAF9D7006251E9 /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3BC17BAF9D7006251E9 /* FrontViewController.m */; };
 		7436E3CD17BAFA4C006251E9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3CC17BAFA4C006251E9 /* SWRevealViewController.m */; };
 		7436E3CE17BAFAB7006251E9 /* NameCardTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449804C17BAB68D00E3C0E4 /* NameCardTemplateViewController.m */; };
 		7436E3CF17BAFE8F006251E9 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4902017B58CE300BC1D1F /* UserData.m */; };
 		7436E3D017BAFEB3006251E9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3CC17BAFA4C006251E9 /* SWRevealViewController.m */; };
 		7436E3D117BAFEB8006251E9 /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3B517BAF9D7006251E9 /* RearViewController.m */; };
-		7436E3D317BAFEC4006251E9 /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436E3BC17BAF9D7006251E9 /* FrontViewController.m */; };
 		7444EA7D17B014D300BEB16F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA7C17B014D300BEB16F /* UIKit.framework */; };
 		7444EA7F17B014D300BEB16F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA7E17B014D300BEB16F /* Foundation.framework */; };
 		7444EA8117B014D300BEB16F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444EA8017B014D300BEB16F /* CoreGraphics.framework */; };
@@ -33,7 +31,6 @@
 		7449804E17BAB68D00E3C0E4 /* NameCardTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7449804C17BAB68D00E3C0E4 /* NameCardTemplateViewController.m */; };
 		7449804F17BAB68D00E3C0E4 /* NameCardTemplateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7449804D17BAB68D00E3C0E4 /* NameCardTemplateViewController.xib */; };
 		74B5F11E17BE893D006E3FA6 /* RearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7436E3B617BAF9D7006251E9 /* RearViewController.xib */; };
-		74B5F11F17BE8944006E3FA6 /* FrontViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7436E3BD17BAF9D7006251E9 /* FrontViewController.xib */; };
 		74B5F12217BE89C3006E3FA6 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F12017BE89C3006E3FA6 /* reveal-icon.png */; };
 		74B5F12317BE89C3006E3FA6 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F12117BE89C3006E3FA6 /* reveal-icon@2x.png */; };
 		74B5F12F17BED8EB006E3FA6 /* rinpa27.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F12417BED8EB006E3FA6 /* rinpa27.jpg */; };
@@ -82,6 +79,12 @@
 		74B5F22217C24450006E3FA6 /* fonticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F21F17C24450006E3FA6 /* fonticon.png */; };
 		74B5F22317C24450006E3FA6 /* fontsizeicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F22017C24450006E3FA6 /* fontsizeicon.png */; };
 		74B5F22517C2445C006E3FA6 /* texticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F22417C2445C006E3FA6 /* texticon.png */; };
+		74B5F22717C25212006E3FA6 /* saveicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F22617C25212006E3FA6 /* saveicon.png */; };
+		74B5F22917C254E3006E3FA6 /* shareicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F22817C254E3006E3FA6 /* shareicon.png */; };
+		74B5F22B17C288BC006E3FA6 /* saveicon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F22A17C288BC006E3FA6 /* saveicon2.png */; };
+		74B5F22D17C28AB6006E3FA6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5F22C17C28AB4006E3FA6 /* AssetsLibrary.framework */; };
+		74B5F22F17C2CBB9006E3FA6 /* rinpalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F22E17C2CBB5006E3FA6 /* rinpalogo.png */; };
+		74B5F23117C2CBE9006E3FA6 /* rinpalogo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B5F23017C2CBE6006E3FA6 /* rinpalogo2.png */; };
 		74C48FF617B43FA400BC1D1F /* TemporaryProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C48FF417B43FA400BC1D1F /* TemporaryProductViewController.m */; };
 		74C48FF717B43FA400BC1D1F /* TemporaryProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C48FF517B43FA400BC1D1F /* TemporaryProductViewController.xib */; };
 		74C48FFA17B45F9700BC1D1F /* GalleryImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C48FF917B45F9600BC1D1F /* GalleryImages.m */; };
@@ -111,14 +114,8 @@
 		74E32A8417BD3E130081C66D /* HorizontalPosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E32A8217BD3E130081C66D /* HorizontalPosterViewController.xib */; };
 		74E32A8817BD3F040081C66D /* VerticalPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E32A8617BD3F040081C66D /* VerticalPosterViewController.m */; };
 		74E32A8917BD3F040081C66D /* VerticalPosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E32A8717BD3F040081C66D /* VerticalPosterViewController.xib */; };
-		74F4384117B01894005C3401 /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4383F17B01894005C3401 /* LandingPageController.m */; };
-		74F4384217B01894005C3401 /* LandingPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4384017B01894005C3401 /* LandingPageController.xib */; };
 		74F4384617B018B6005C3401 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4384417B018B6005C3401 /* GalleryViewController.m */; };
 		74F4384717B018B6005C3401 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4384517B018B6005C3401 /* GalleryViewController.xib */; };
-		74F4384B17B018D0005C3401 /* ChooseTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4384917B018D0005C3401 /* ChooseTypeViewController.m */; };
-		74F4384C17B018D0005C3401 /* ChooseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4384A17B018D0005C3401 /* ChooseTypeViewController.xib */; };
-		74F4385017B018ED005C3401 /* ChooseBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4384E17B018ED005C3401 /* ChooseBackgroundViewController.m */; };
-		74F4385117B018ED005C3401 /* ChooseBackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4384F17B018ED005C3401 /* ChooseBackgroundViewController.xib */; };
 		74F4385517B01904005C3401 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4385317B01904005C3401 /* EditorViewController.m */; };
 		74F4385617B01904005C3401 /* EditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F4385417B01904005C3401 /* EditorViewController.xib */; };
 		74F4385A17B02DF7005C3401 /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4385917B02DF7005C3401 /* ViewUtils.m */; };
@@ -140,9 +137,6 @@
 		7436E3B417BAF9D7006251E9 /* RearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RearViewController.h; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RearViewController.h; sourceTree = "<group>"; };
 		7436E3B517BAF9D7006251E9 /* RearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RearViewController.m; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/RearViewController.m; sourceTree = "<group>"; };
 		7436E3B717BAF9D7006251E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/en.lproj/RearViewController.xib; sourceTree = "<group>"; };
-		7436E3BB17BAF9D7006251E9 /* FrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontViewController.h; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/FrontViewController.h; sourceTree = "<group>"; };
-		7436E3BC17BAF9D7006251E9 /* FrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontViewController.m; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/FrontViewController.m; sourceTree = "<group>"; };
-		7436E3BE17BAF9D7006251E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../../SWRevealViewController/RevealControllerExample/RevealControllerProject/en.lproj/FrontViewController.xib; sourceTree = "<group>"; };
 		7436E3CB17BAFA4C006251E9 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = ../../SWRevealViewController/SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		7436E3CC17BAFA4C006251E9 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = ../../SWRevealViewController/SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
 		7444EA7917B014D300BEB16F /* Rimpa!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rimpa!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +222,12 @@
 		74B5F21F17C24450006E3FA6 /* fonticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fonticon.png; sourceTree = "<group>"; };
 		74B5F22017C24450006E3FA6 /* fontsizeicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fontsizeicon.png; sourceTree = "<group>"; };
 		74B5F22417C2445C006E3FA6 /* texticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texticon.png; sourceTree = "<group>"; };
+		74B5F22617C25212006E3FA6 /* saveicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveicon.png; sourceTree = "<group>"; };
+		74B5F22817C254E3006E3FA6 /* shareicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareicon.png; sourceTree = "<group>"; };
+		74B5F22A17C288BC006E3FA6 /* saveicon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveicon2.png; sourceTree = "<group>"; };
+		74B5F22C17C28AB4006E3FA6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		74B5F22E17C2CBB5006E3FA6 /* rinpalogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rinpalogo.png; sourceTree = "<group>"; };
+		74B5F23017C2CBE6006E3FA6 /* rinpalogo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rinpalogo2.png; sourceTree = "<group>"; };
 		74C48FF317B43FA300BC1D1F /* TemporaryProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporaryProductViewController.h; sourceTree = "<group>"; };
 		74C48FF417B43FA400BC1D1F /* TemporaryProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemporaryProductViewController.m; sourceTree = "<group>"; };
 		74C48FF517B43FA400BC1D1F /* TemporaryProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporaryProductViewController.xib; sourceTree = "<group>"; };
@@ -264,18 +264,9 @@
 		74E32A8517BD3F040081C66D /* VerticalPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalPosterViewController.h; sourceTree = "<group>"; };
 		74E32A8617BD3F040081C66D /* VerticalPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalPosterViewController.m; sourceTree = "<group>"; };
 		74E32A8717BD3F040081C66D /* VerticalPosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerticalPosterViewController.xib; sourceTree = "<group>"; };
-		74F4383E17B01894005C3401 /* LandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageController.h; sourceTree = "<group>"; };
-		74F4383F17B01894005C3401 /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
-		74F4384017B01894005C3401 /* LandingPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingPageController.xib; sourceTree = "<group>"; };
 		74F4384317B018B6005C3401 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		74F4384417B018B6005C3401 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		74F4384517B018B6005C3401 /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
-		74F4384817B018D0005C3401 /* ChooseTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTypeViewController.h; sourceTree = "<group>"; };
-		74F4384917B018D0005C3401 /* ChooseTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTypeViewController.m; sourceTree = "<group>"; };
-		74F4384A17B018D0005C3401 /* ChooseTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseTypeViewController.xib; sourceTree = "<group>"; };
-		74F4384D17B018ED005C3401 /* ChooseBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBackgroundViewController.h; sourceTree = "<group>"; };
-		74F4384E17B018ED005C3401 /* ChooseBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBackgroundViewController.m; sourceTree = "<group>"; };
-		74F4384F17B018ED005C3401 /* ChooseBackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBackgroundViewController.xib; sourceTree = "<group>"; };
 		74F4385217B01904005C3401 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
 		74F4385317B01904005C3401 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
 		74F4385417B01904005C3401 /* EditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditorViewController.xib; sourceTree = "<group>"; };
@@ -291,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B5F22D17C28AB6006E3FA6 /* AssetsLibrary.framework in Frameworks */,
 				74B5F1D717C16FCC006E3FA6 /* QuartzCore.framework in Frameworks */,
 				74B5F13F17BEE37A006E3FA6 /* Social.framework in Frameworks */,
 				7444EA7D17B014D300BEB16F /* UIKit.framework in Frameworks */,
@@ -320,9 +312,6 @@
 				7436E3B417BAF9D7006251E9 /* RearViewController.h */,
 				7436E3B517BAF9D7006251E9 /* RearViewController.m */,
 				7436E3B617BAF9D7006251E9 /* RearViewController.xib */,
-				7436E3BB17BAF9D7006251E9 /* FrontViewController.h */,
-				7436E3BC17BAF9D7006251E9 /* FrontViewController.m */,
-				7436E3BD17BAF9D7006251E9 /* FrontViewController.xib */,
 			);
 			name = RevealControl;
 			sourceTree = "<group>";
@@ -330,6 +319,9 @@
 		7444EA7017B014D300BEB16F = {
 			isa = PBXGroup;
 			children = (
+				74B5F23017C2CBE6006E3FA6 /* rinpalogo2.png */,
+				74B5F22E17C2CBB5006E3FA6 /* rinpalogo.png */,
+				74B5F22C17C28AB4006E3FA6 /* AssetsLibrary.framework */,
 				74B5F1D617C16FCC006E3FA6 /* QuartzCore.framework */,
 				74B5F14417BEEF88006E3FA6 /* Default-568h@2x.png */,
 				74B5F14217BEEF58006E3FA6 /* Default@2x.png */,
@@ -416,18 +408,9 @@
 		7444EAB117B0164000BEB16F /* view */ = {
 			isa = PBXGroup;
 			children = (
-				74F4383E17B01894005C3401 /* LandingPageController.h */,
-				74F4383F17B01894005C3401 /* LandingPageController.m */,
-				74F4384017B01894005C3401 /* LandingPageController.xib */,
 				74F4384317B018B6005C3401 /* GalleryViewController.h */,
 				74F4384417B018B6005C3401 /* GalleryViewController.m */,
 				74F4384517B018B6005C3401 /* GalleryViewController.xib */,
-				74F4384817B018D0005C3401 /* ChooseTypeViewController.h */,
-				74F4384917B018D0005C3401 /* ChooseTypeViewController.m */,
-				74F4384A17B018D0005C3401 /* ChooseTypeViewController.xib */,
-				74F4384D17B018ED005C3401 /* ChooseBackgroundViewController.h */,
-				74F4384E17B018ED005C3401 /* ChooseBackgroundViewController.m */,
-				74F4384F17B018ED005C3401 /* ChooseBackgroundViewController.xib */,
 				74F4385217B01904005C3401 /* EditorViewController.h */,
 				74F4385317B01904005C3401 /* EditorViewController.m */,
 				74F4385417B01904005C3401 /* EditorViewController.xib */,
@@ -504,6 +487,9 @@
 		74B5F21717C23C58006E3FA6 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				74B5F22A17C288BC006E3FA6 /* saveicon2.png */,
+				74B5F22817C254E3006E3FA6 /* shareicon.png */,
+				74B5F22617C25212006E3FA6 /* saveicon.png */,
 				74B5F1FF17C23C4B006E3FA6 /* addthis500.png */,
 				74B5F22417C2445C006E3FA6 /* texticon.png */,
 				74B5F21E17C24450006E3FA6 /* coloricon.jpg */,
@@ -657,10 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7444EA8717B014D300BEB16F /* InfoPlist.strings in Resources */,
-				74F4384217B01894005C3401 /* LandingPageController.xib in Resources */,
 				74F4384717B018B6005C3401 /* GalleryViewController.xib in Resources */,
-				74F4384C17B018D0005C3401 /* ChooseTypeViewController.xib in Resources */,
-				74F4385117B018ED005C3401 /* ChooseBackgroundViewController.xib in Resources */,
 				74F4385617B01904005C3401 /* EditorViewController.xib in Resources */,
 				74F4385D17B048C9005C3401 /* rinpa2.jpg in Resources */,
 				74C48FF717B43FA400BC1D1F /* TemporaryProductViewController.xib in Resources */,
@@ -685,7 +668,6 @@
 				74E32A8417BD3E130081C66D /* HorizontalPosterViewController.xib in Resources */,
 				74E32A8917BD3F040081C66D /* VerticalPosterViewController.xib in Resources */,
 				74B5F11E17BE893D006E3FA6 /* RearViewController.xib in Resources */,
-				74B5F11F17BE8944006E3FA6 /* FrontViewController.xib in Resources */,
 				74B5F12217BE89C3006E3FA6 /* reveal-icon.png in Resources */,
 				74B5F12317BE89C3006E3FA6 /* reveal-icon@2x.png in Resources */,
 				74B5F12F17BED8EB006E3FA6 /* rinpa27.jpg in Resources */,
@@ -723,6 +705,11 @@
 				74B5F22217C24450006E3FA6 /* fonticon.png in Resources */,
 				74B5F22317C24450006E3FA6 /* fontsizeicon.png in Resources */,
 				74B5F22517C2445C006E3FA6 /* texticon.png in Resources */,
+				74B5F22717C25212006E3FA6 /* saveicon.png in Resources */,
+				74B5F22917C254E3006E3FA6 /* shareicon.png in Resources */,
+				74B5F22B17C288BC006E3FA6 /* saveicon2.png in Resources */,
+				74B5F22F17C2CBB9006E3FA6 /* rinpalogo.png in Resources */,
+				74B5F23117C2CBE9006E3FA6 /* rinpalogo2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,17 +744,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7436E3D317BAFEC4006251E9 /* FrontViewController.m in Sources */,
 				7436E3D117BAFEB8006251E9 /* RearViewController.m in Sources */,
 				7436E3D017BAFEB3006251E9 /* SWRevealViewController.m in Sources */,
 				7449802617B9491F00E3C0E4 /* SPUserResizableView.m in Sources */,
 				74C4900117B5584000BC1D1F /* ABGridView.m in Sources */,
 				7444EA8917B014D300BEB16F /* main.m in Sources */,
 				7444EA8D17B014D300BEB16F /* AppDelegate.m in Sources */,
-				74F4384117B01894005C3401 /* LandingPageController.m in Sources */,
 				74F4384617B018B6005C3401 /* GalleryViewController.m in Sources */,
-				74F4384B17B018D0005C3401 /* ChooseTypeViewController.m in Sources */,
-				74F4385017B018ED005C3401 /* ChooseBackgroundViewController.m in Sources */,
 				74F4385517B01904005C3401 /* EditorViewController.m in Sources */,
 				74F4385A17B02DF7005C3401 /* ViewUtils.m in Sources */,
 				74F4386617B15EDD005C3401 /* WordLabel.m in Sources */,
@@ -803,7 +786,6 @@
 				7444EAA817B014D400BEB16F /* Rimpa_Tests.m in Sources */,
 				74C4900017B557C700BC1D1F /* ABGridView.m in Sources */,
 				7449802517B9480E00E3C0E4 /* SPUserResizableView.m in Sources */,
-				7436E3C717BAF9D7006251E9 /* FrontViewController.m in Sources */,
 				7436E3CD17BAFA4C006251E9 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,14 +807,6 @@
 				7436E3B717BAF9D7006251E9 /* en */,
 			);
 			name = RearViewController.xib;
-			sourceTree = "<group>";
-		};
-		7436E3BD17BAF9D7006251E9 /* FrontViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7436E3BE17BAF9D7006251E9 /* en */,
-			);
-			name = FrontViewController.xib;
 			sourceTree = "<group>";
 		};
 		7444EA8517B014D300BEB16F /* InfoPlist.strings */ = {

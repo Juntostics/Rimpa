@@ -7,11 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "LandingPageController.h"
 #import "UserData.h"
 #import "SWRevealViewController.h"
 #import "RearViewController.h"
-#import "FrontViewController.h"
 #import "GLDemoViewController.h"
 
 @interface AppDelegate ()<SWRevealViewControllerDelegate>

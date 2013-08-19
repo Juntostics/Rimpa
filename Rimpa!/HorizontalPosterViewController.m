@@ -14,7 +14,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SWRevealViewController.h"
 #import "EditorViewController.h"
-#import "ChooseTypeViewController.h"
 
 @interface HorizontalPosterViewController ()<ABGridViewDelegate>
 {
@@ -38,6 +37,8 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"choose background image  (press one to edit)";
+
     //new galleryimages
     images = [GalleryImages new];
     

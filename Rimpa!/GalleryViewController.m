@@ -33,12 +33,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    self.view.userInteractionEnabled=YES;
+
     if(_haveAThingToDelete){
         [[UserData shareUserData] removeUserData:[_deleteNum integerValue]];
         NSLog(@"datacount:%lu",(unsigned long)[[UserData shareUserData].userDataList count]);
         [abGridView reloadData];
         [[UserData shareUserData] save];
-        
     }
     _haveAThingToDelete = NO;
 
@@ -46,6 +47,16 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"Gallery";
+    //userinteractionをonにする
+    self.view.userInteractionEnabled = YES;
+
+    
+    //navigationbar
+    self.navigationController.navigationBar.translucent = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+    [self setWantsFullScreenLayout:YES];
+    
     //delete data
     if(_haveAThingToDelete){
         [[UserData shareUserData] removeUserData:[_deleteNum integerValue]];
@@ -56,19 +67,7 @@
     }
     _haveAThingToDelete = NO;
     
-    //navigationbar setting
-    //self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-  //  self.navigationController.navigationBar.translucent = YES;
-    [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithWhite:100 alpha:0.1]];
-    [[UINavigationBar appearance] setTintColor:[UIColor clearColor]];
-
-
-    // ツールバーを半透明に（selfはUIViewController）
-    self.navigationController.toolbar.barStyle = UIBarStyleBlack;
-    self.navigationController.toolbar.translucent = YES;
-    
-    // ちなみにステータスバーは、これまでどおりでＯＫ
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
+  
 
     //set bacgroundcolor on view
     //UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];

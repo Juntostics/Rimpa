@@ -76,6 +76,8 @@
     [self.view addSubview:self.collectionView];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.userInteractionEnabled=YES;
+
     [super viewWillAppear:YES];
     
     //delete data
@@ -92,6 +94,9 @@
 
 - (void)viewDidLoad
 {
+    self.view.userInteractionEnabled=YES;
+
+    self.title = @"Gallery";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     

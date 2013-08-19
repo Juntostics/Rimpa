@@ -25,6 +25,8 @@
     IBOutlet UITextView *textView;
     IBOutlet UITableView *fontTableView;
     IBOutlet UITableView *colorTableView;
+    IBOutlet UIButton *largeButton;
+    IBOutlet UIButton *smallButton;
     NSMutableArray *labelList;
     NSMutableArray *boxList;
     NSInteger initialPositionForLabel;
@@ -66,6 +68,7 @@
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     if(tableView1.tag ==0){
         NSString *fontfamilyname = [fontFamilyNames objectAtIndex:indexPath.row];
@@ -117,6 +120,13 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"Editor";
+    //モック用
+    largeButton.hidden = YES;
+    smallButton.hidden = YES;
+    sliderForBoxAlpha.hidden = YES;
+    
+    
     //ALradiusボタンの初期化
     //create an instance of the radial menu and set ourselves as the delegate.
 	self.textMenu = [[ALRadialMenu alloc] init];
@@ -184,10 +194,12 @@
     if (!fontTableViewIsHidden) {
         [self slideTableViewToleft:fontTableView];
         fontTableViewIsHidden=YES;
+        fontTableView.hidden=YES;
     }
     if (!colorTableViewIsHidden) {
         [self slideTableViewToRight:colorTableView];
         colorTableViewIsHidden=YES;
+        colorTableView.hidden=YES;
     }
     
     //wordLabelを入れる配列を生成
@@ -238,7 +250,7 @@
 	if (radialMenu == self.textMenu) {
 		return 5;
 	} else if (radialMenu == self.boxMenu) {
-		return 4;
+		return 3;
 	}
 	
 	return 0;
@@ -284,11 +296,9 @@
 	} else if (radialMenu == self.boxMenu) {
 		if (index == 1) {
 			return [UIImage imageNamed:@"opacityicon.jpg"];
-		} else if (index == 2) {
-			return [UIImage imageNamed:@"coloricon.jpg"];
-		} else if (index == 3) {
+		}else if (index == 2) {
 			return [UIImage imageNamed:@"addthis500.png"];
-		}else if (index == 4) {
+		}else if (index == 3) {
 			return [UIImage imageNamed:@"deleteicon.png"];
 		}
 	}
@@ -299,18 +309,30 @@
 
 - (void) radialMenu:(ALRadialMenu *)radialMenu didSelectItemAtIndex:(NSInteger)index {
 	if (radialMenu == self.textMenu) {
-		[self.textMenu itemsWillDisapearIntoButton:self.textButton];
+//		[self.textMenu itemsWillDisapearIntoButton:self.textButton];
         if (index == 1) {
             //-------------------------------slide font bar
             if(fontTableViewIsHidden){
+                fontTableView.hidden=NO;
                 [self slideTableViewToRight:fontTableView];
                 fontTableViewIsHidden=NO;
             }
         } else if (index == 2) {
 			//--------------------------------change size of word
+            if (largeButton.hidden) {
+                largeButton.hidden = NO;
+            }else{
+                largeButton.hidden = YES;
+            }
+            if (smallButton.hidden) {
+                smallButton.hidden = NO;
+            }else{
+                smallButton.hidden = YES;
+            }
 		} else if (index == 3) {
             //-------------------------------slide color bar
             if (colorTableViewIsHidden) {
+                colorTableView.hidden=NO;
                 [self slideTableViewToleft:colorTableView];
                 colorTableViewIsHidden=NO;
             }
@@ -332,12 +354,15 @@
         }
         
 	} else if (radialMenu == self.boxMenu) {
-		[self.boxMenu itemsWillDisapearIntoButton:self.boxButton];
+//		[self.boxMenu itemsWillDisapearIntoButton:self.boxButton];
 		if (index == 1) {
             //--------------------------------change opacity of box
+            if(sliderForBoxAlpha.hidden){
+                sliderForBoxAlpha.hidden = NO;
+            }else{
+                sliderForBoxAlpha.hidden = YES;
+            }
 		} else if (index == 2) {
-			//--------------------------------change color
-		} else if (index == 3) {
             //--------------------------------generate box
             CGRect gripFrame = CGRectMake(50, 50, 200, 150);
             ResizableBoxView *userResizableView = [[ResizableBoxView alloc] initWithFrame:gripFrame];
@@ -354,19 +379,14 @@
             [imageView sendSubviewToBack:userResizableView];
             
             [boxList addObject:userResizableView];
-		} else if (index == 4) {
+		} else if (index == 3) {
             //--------------------------------delete box
             [boxList removeObject:currentlyEditingView];
             [currentlyEditingView removeFromSuperview];
             currentlyEditingView = lastEditedView;
         }
 	}
-    
 }
-
-
-
-
 
 - (void)slider_ValueChanged:(id)sender
 {
@@ -408,7 +428,6 @@
     //[imageView bringSubviewToFront:label];
     initialPositionForLabel += 25;
     label.delegate = self;
-    
 }
 
 -(IBAction)generateBox:(id)sender
@@ -457,7 +476,7 @@
     // これを行わないと、[sender translationInView:]が返す距離は、ドラッグが始まってからの蓄積値となるため、
     // 今回のようなドラッグに合わせてImageを動かしたい場合には、蓄積値をゼロにする
     [sender setTranslation:CGPointZero inView:self.view];
-    [self forcusingLabel:(WordLabel*)sender.view];
+    //[self forcusingLabel:(WordLabel*)sender.view];
 
 }
 
@@ -537,6 +556,7 @@
 
 -(IBAction)saveImage:(id)sender
 {
+    [self hideEditingHandles];
     UIGraphicsBeginImageContext(imageView.bounds.size);
     [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *bitmap = UIGraphicsGetImageFromCurrentImageContext();
@@ -588,11 +608,17 @@
     if (!fontTableViewIsHidden) {
         [self slideTableViewToleft:fontTableView];
         fontTableViewIsHidden=YES;
+        [self performSelector:@selector(hiddenTableView:) withObject:fontTableView afterDelay:0.3];
     }
     if (!colorTableViewIsHidden) {
         [self slideTableViewToRight:colorTableView];
         colorTableViewIsHidden=YES;
-    }
+        [self performSelector:@selector(hiddenTableView:) withObject:colorTableView afterDelay:0.3];    }
+}
+
+- (void)hiddenTableView:(UITableView *)tableView
+{
+    tableView.hidden=YES;
 }
 
 -(IBAction)deleteBox:(id)sender{

@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"complete saving";
     [super viewDidLoad];
     imageView.image = _image;
     imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.width);

@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ALRadialMenu.h"
 
-@interface PhotoViewController : UIViewController
+@interface PhotoViewController : UIViewController<ALRadialMenuDelegate>
+- (IBAction)buttonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+
+@property (strong, nonatomic) ALRadialMenu *shareMenu;
+
+@property (strong, nonatomic) NSArray *popups;
 @property(nonatomic,strong) UIImage *image;
 @property(nonatomic,strong) NSNumber *index;
 @end

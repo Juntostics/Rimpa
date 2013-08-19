@@ -73,8 +73,8 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.bounces                        = YES;
     self.scrollView.delegate                       = self;
-    UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
-    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
+//    UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
+//    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     [self addSubview:self.scrollView];
 
     _itemSize         = CGSizeMake( 70, 70 );

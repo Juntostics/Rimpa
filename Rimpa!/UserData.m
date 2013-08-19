@@ -12,7 +12,6 @@
 
 @interface UserData()
 {
-    GalleryImages *galleryImages;
     NSDictionary *userDataDictionary;
 }
 @end
@@ -43,10 +42,10 @@ static UserData* _sharedInstance = nil;
 }
 - (void)_init
 {
-    galleryImages = [GalleryImages new];
+    _galleryImages = [GalleryImages new];
     _userDataList = [NSMutableArray array];
-    _images = [NSMutableArray arrayWithArray:galleryImages.images];
-    _galleryImageCount = [[NSNumber alloc]initWithInteger:[galleryImages.images count]];
+    _images = [NSMutableArray arrayWithArray:_galleryImages.images];
+    _galleryImageCount = [[NSNumber alloc]initWithInteger:[_galleryImages.images count]];
     
 }
 
@@ -108,8 +107,8 @@ static UserData* _sharedInstance = nil;
 
 - (void)removeUserData:(NSUInteger)index {
 
-    DataForSaving *data = [_userDataList objectAtIndex:index-[galleryImages.images count]];
-    NSLog(@"%d,%d,%d,%d",index,[_userDataList count],[_images count],[galleryImages.images count]);
+    DataForSaving *data = [_userDataList objectAtIndex:index-[_galleryImages.images count]];
+    NSLog(@"%d,%d,%d,%d",index,[_userDataList count],[_images count],[_galleryImages.images count]);
     [_userDataList removeObject:data];
     [_images removeObjectAtIndex:index];
     

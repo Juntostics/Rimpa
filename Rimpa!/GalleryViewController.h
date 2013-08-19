@@ -14,4 +14,5 @@
 }
 @property (nonatomic) BOOL haveAThingToDelete;
 @property (nonatomic,strong) NSNumber* deleteNum;
+@property (nonatomic,strong) UIView* maskView;
 @end
