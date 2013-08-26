@@ -73,9 +73,12 @@
 - (void)loadView
 {
     [super loadView];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.collectionView];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    
+    
     self.view.userInteractionEnabled=YES;
 
     [super viewWillAppear:YES];
@@ -94,8 +97,7 @@
 
 - (void)viewDidLoad
 {
-    self.view.userInteractionEnabled=YES;
-
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"4-light-menu-bar"] forBarMetrics:UIBarMetricsDefault];
     self.title = @"Gallery";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -103,7 +105,7 @@
     // configure views
     GLGooglePlusLikeLayout *layout = (GLGooglePlusLikeLayout *)[self.collectionView collectionViewLayout];
     //-------------------------------------------------------for Header setting
-    [layout setHasHeaders:YES];
+    [layout setHasHeaders:NO];
     
     [self.collectionView registerClass:[GLSectionView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:SECTION_IDENTIFIER];
     [self.collectionView registerClass:[GLCell class] forCellWithReuseIdentifier:CELL_IDENTIFIER];
@@ -235,7 +237,7 @@
 
 - (void)commonInit
 {
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background4.jpeg"]];
 }
 
 - (void)updateLayout
@@ -262,7 +264,7 @@
         // add random sizes for demo (NB: You need to add actual content size you want here or at sizeForItemAtIndexPath delegate method as per your needs)
         NSMutableArray* tmp = [[NSMutableArray alloc] initWithCapacity:[[UserData shareUserData].images count]];
         for (int i = 0; i < [[UserData shareUserData].images count]; i++) {
-            [tmp addObject:[NSValue valueWithCGSize:[weakSelf randomSize]]];
+            [tmp addObject:[NSValue valueWithCGSize:((UIImage*)[UserData shareUserData].images[i]).size]];
         }
         
         int64_t delayInSeconds = 2.0;

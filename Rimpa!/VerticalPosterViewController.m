@@ -37,7 +37,10 @@
 
 - (void)viewDidLoad
 {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"4-light-menu-bar"] forBarMetrics:UIBarMetricsDefault];
     self.title = @"choose background image  (press one to edit)";
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background4.jpeg"]];
+
 
     //new galleryimages
     images = [GalleryImages new];

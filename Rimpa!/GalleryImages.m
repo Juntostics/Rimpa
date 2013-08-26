@@ -24,12 +24,12 @@
 }
 - (void)_init
 {
-    _images = [NSArray arrayWithObjects:[UIImage imageNamed:@"rinpa2.jpg"],
-               [UIImage imageNamed:@"rinpa3.jpg"],[UIImage imageNamed:@"rinpa4.jpg"],
-               [UIImage imageNamed:@"rinpa5.jpg"],[UIImage imageNamed:@"rinpa6.jpg"],
-               [UIImage imageNamed:@"rinpa7.jpg"],[UIImage imageNamed:@"rinpa8.jpg"],
-               [UIImage imageNamed:@"rinpa9.jpg"],[UIImage imageNamed:@"rinpa10.jpg"],
-               [UIImage imageNamed:@"rinpa11.jpg"],[UIImage imageNamed:@"rinpa12.jpg"],
+    _images = [NSArray arrayWithObjects:[UIImage imageNamed:@"rinpa2_2.jpg"],
+               [UIImage imageNamed:@"rinpa3_2.jpg"],[UIImage imageNamed:@"rinpa4_2.jpg"],
+               [UIImage imageNamed:@"rinpa5.jpg"],[UIImage imageNamed:@"rinpa6_2.jpg"],
+               [UIImage imageNamed:@"rinpa7_2.jpg"],[UIImage imageNamed:@"rinpa8_2.jpg"],
+               [UIImage imageNamed:@"rinpa9_2.jpg"],[UIImage imageNamed:@"rinpa10.jpg"],
+               [UIImage imageNamed:@"rinpa11.jpg"],[UIImage imageNamed:@"rinpa12_2.jpg"],
                [UIImage imageNamed:@"rinpa13.jpg"],[UIImage imageNamed:@"rinpa14.jpg"],
                [UIImage imageNamed:@"rinpa15.jpg"],[UIImage imageNamed:@"rinpa16.jpg"],
                nil];

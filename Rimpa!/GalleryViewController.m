@@ -49,13 +49,7 @@
 {
     self.title = @"Gallery";
     //userinteractionをonにする
-    self.view.userInteractionEnabled = YES;
-
-    
-    //navigationbar
-    self.navigationController.navigationBar.translucent = YES;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-    [self setWantsFullScreenLayout:YES];
+  
     
     //delete data
     if(_haveAThingToDelete){

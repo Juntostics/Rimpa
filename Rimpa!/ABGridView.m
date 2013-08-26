@@ -76,9 +76,10 @@
 //    UIImage *backgroundimage = [UIImage imageNamed:@"rinpa9.jpg"];
 //    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:backgroundimage];
     [self addSubview:self.scrollView];
+    self.backgroundColor = [UIColor clearColor];
 
     _itemSize         = CGSizeMake( 70, 70 );
-    _minimumColumnGap = 5;
+    _minimumColumnGap = 0;
 }
 
 /**

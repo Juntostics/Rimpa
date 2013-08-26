@@ -37,6 +37,8 @@
     SWRevealViewController *mainRevealController = [[SWRevealViewController alloc]
                                                     initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
     
+    [frontNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"4-light-menu-bar"] forBarMetrics:UIBarMetricsDefault];
+    
     mainRevealController.delegate = self;
     
 	self.viewController = mainRevealController;

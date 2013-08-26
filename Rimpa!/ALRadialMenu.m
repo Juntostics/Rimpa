@@ -55,7 +55,7 @@
 	int centerY = frame.origin.y + (frame.size.width/2);
 	CGPoint origin = CGPointMake(centerX, centerY);
 	
-	float buttonSize = 60.0f;
+	float buttonSize = 50.0f;
 	if ([self.delegate respondsToSelector:@selector(buttonSizeForRadialMenu:)]) {
 		buttonSize = [self.delegate buttonSizeForRadialMenu:self];
 	}

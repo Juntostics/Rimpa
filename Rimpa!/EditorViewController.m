@@ -120,6 +120,8 @@
 
 - (void)viewDidLoad
 {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background4.jpeg"]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"4-light-menu-bar"] forBarMetrics:UIBarMetricsDefault];
     self.title = @"Editor";
     //モック用
     largeButton.hidden = YES;
@@ -230,6 +232,18 @@
     [accessoryView addSubview:closeButton];
     textView.inputAccessoryView = accessoryView;
     //---------------------------
+    
+    
+    
+    //saveボタンをつける
+    UIBarButtonItem *btn =
+    [[UIBarButtonItem alloc]
+     initWithBarButtonSystemItem:UIBarButtonSystemItemSave  // スタイルを指定
+     target:self  // デリゲートのターゲットを指定
+     action:@selector(saveImage:)  // ボタンが押されたときに呼ばれるメソッドを指定
+     ];
+    
+    self.navigationItem.rightBarButtonItem = btn;
 }
 
 
@@ -282,24 +296,32 @@
 - (UIImage *) radialMenu:(ALRadialMenu *)radialMenu imageForIndex:(NSInteger) index {
 	if (radialMenu == self.textMenu) {
 		if (index == 1) {
-			return [UIImage imageNamed:@"fonticon.png"];
+//			return [UIImage imageNamed:@"fonticon.png"];
+            return [UIImage imageNamed:@"umefont.png"];
 		} else if (index == 2) {
-			return [UIImage imageNamed:@"fontsizeicon.png"];
+//			return [UIImage imageNamed:@"fontsizeicon.png"];
+            return [UIImage imageNamed:@"umesize.png"];
 		} else if (index == 3) {
-			return [UIImage imageNamed:@"coloricon.jpg"];
+//			return [UIImage imageNamed:@"coloricon.jpg"];
+            return [UIImage imageNamed:@"umecolor.png"];
 		} else if (index == 4) {
-			return [UIImage imageNamed:@"addthis500.png"];
+//			return [UIImage imageNamed:@"addthis500.png"];
+            return [UIImage imageNamed:@"umeadd4.png"];
 		} else if (index == 5) {
-			return [UIImage imageNamed:@"deleteicon.png"];
+//			return [UIImage imageNamed:@"deleteicon.png"];
+            return [UIImage imageNamed:@"umedelete.png"];
 		}
         
 	} else if (radialMenu == self.boxMenu) {
 		if (index == 1) {
-			return [UIImage imageNamed:@"opacityicon.jpg"];
+//			return [UIImage imageNamed:@"opacityicon.jpg"];
+            return [UIImage imageNamed:@"umeopacity.png"];
 		}else if (index == 2) {
-			return [UIImage imageNamed:@"addthis500.png"];
+//			return [UIImage imageNamed:@"addthis500.png"];
+            return [UIImage imageNamed:@"umeadd4.png"];
 		}else if (index == 3) {
-			return [UIImage imageNamed:@"deleteicon.png"];
+//			return [UIImage imageNamed:@"deleteicon.png"];
+            return [UIImage imageNamed:@"umedelete.png"];
 		}
 	}
 	
@@ -340,7 +362,7 @@
             //-------------------------------generate wordlabel
             WordLabel *label = [WordLabel new];
             label.frame = CGRectMake(100+initialPositionForLabel, 100+initialPositionForLabel, 100, 50);
-            label.text = @"input text.";
+            [label sizeToFit];
             [labelList addObject:label];
             [imageView addSubview:label];
             //[imageView bringSubviewToFront:label];
@@ -419,10 +441,23 @@
 }
 -(IBAction)generateLabel:(id)sender
 {
+    //UIImageViewの中央点をとってくる
+    CGFloat x;
+    CGFloat y;
+    CGFloat width;
+    CGFloat height;
+
+    width = imageView.frame.size.width;
+    height = imageView.frame.size.height;
+    
+    x = width / 2.0f;
+    y = height / 2.0f;
+    
     
     WordLabel *label = [WordLabel new];
-    label.frame = CGRectMake(100+initialPositionForLabel, 100+initialPositionForLabel, 100, 50);
-    label.text = @"input text.";
+    CGSize size = [label.text sizeWithFont:label.font];
+    label.frame = CGRectMake(x-size.width/2.0f, y-size.height/2.0f, 100, 50);
+    [label sizeToFit];
     [labelList addObject:label];
     [imageView addSubview:label];
     //[imageView bringSubviewToFront:label];

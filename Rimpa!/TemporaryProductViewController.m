@@ -28,11 +28,14 @@
 
 - (void)viewDidLoad
 {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"4-light-menu-bar"] forBarMetrics:UIBarMetricsDefault];
     self.title = @"complete saving";
     [super viewDidLoad];
     imageView.image = _image;
     imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.width);
     imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background4.jpeg"]];
+
 
     // Do any additional setup after loading the view from its nib.
 }
