@@ -64,6 +64,10 @@
     self.backgroundColor = [UIColor clearColor];
     self.userInteractionEnabled = YES;
     self.textAlignment = NSTextAlignmentCenter;
+    self.adjustsFontSizeToFitWidth = YES;
+    self.minimumScaleFactor = 0.5f;
+
+
 //    self.numberOfLines =0;
 //    self.lineBreakMode = NO;
 }
@@ -75,6 +79,9 @@
     self.textColor = [UIColor whiteColor];
     self.font = [UIFont systemFontOfSize:40];
     self.text = @"Double tap to edit me!";
+    self.adjustsFontSizeToFitWidth = YES;
+    self.minimumScaleFactor = 0.5f;
+    
     [self sizeToFit];
     
 

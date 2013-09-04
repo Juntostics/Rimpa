@@ -45,6 +45,10 @@
 	
 	self.window.rootViewController = self.viewController;
 	[self.window makeKeyAndVisible];
+    
+    //スプラッシュ用スリープ
+    sleep(3);
+
 	return YES;
 }
 

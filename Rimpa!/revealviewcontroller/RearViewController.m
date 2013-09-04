@@ -32,7 +32,6 @@
 #import "NameCardTemplateViewController.h"
 #import "HorizontalPosterViewController.h"
 #import "VerticalPosterViewController.h"
-#import "GalleryViewController.h"
 #import "GLDemoViewController.h"
 
 @interface RearViewController()
@@ -49,6 +48,8 @@
 
 - (void)viewDidLoad
 {
+    _rearTableView.backgroundView = nil;
+    _rearTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background4.jpeg"]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"4-light-menu-bar"] forBarMetrics:UIBarMetricsDefault];
     
 	[super viewDidLoad];

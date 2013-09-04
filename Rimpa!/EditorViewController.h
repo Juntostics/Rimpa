@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WordLabel.h"
-#import "BoxView.h"
 #import "SPUserResizableView.h"
 #import "ALRadialMenu.h"
 
-@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate,ALRadialMenuDelegate>
+@interface EditorViewController : UIViewController <WordLabelDelegate,UITableViewDataSource,UITableViewDelegate,SPUserResizableViewDelegate,UIGestureRecognizerDelegate,ALRadialMenuDelegate,UITextViewDelegate>
 {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;

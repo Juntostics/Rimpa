@@ -7,7 +7,6 @@
 //
 
 #import "EditorViewController.h"
-#import "ViewUtils.h"
 #import "WordLabel.h"
 #import "TemporaryProductViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -42,6 +41,7 @@
     id nowForcusingOn;
     BOOL fontTableViewIsHidden;
     BOOL colorTableViewIsHidden;
+    CGRect imageViewRect;
 }
 
 @end
@@ -145,6 +145,8 @@
     imageView.image = _backgroundImage;
     //アスペクト比を保ちつつ最大の大きさで表示
     imageView.contentMode=UIViewContentModeScaleAspectFit;
+    //imageViewのCGRectを生成（panAction用）
+    imageViewRect = imageView.bounds;
 
     //boxアルファを変更するためのスライダーの設定
     sliderForBoxAlpha.minimumValue = 0;
@@ -215,9 +217,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self generateLabel:nil];
+    
     [textView setAlpha:0];
     [textView setBackgroundColor:[UIColor clearColor]];
-    
     
     //ーーーーーーーーーtextfieldの設定
     UIView* accessoryView =[[UIView alloc] initWithFrame:CGRectMake(0,0,320,50)];
@@ -244,6 +246,10 @@
      ];
     
     self.navigationItem.rightBarButtonItem = btn;
+    
+    //UITextViewのキーボードが隠れたときの処理を追加
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+
 }
 
 
@@ -426,7 +432,16 @@
     }
     [self forcusingLabel:touchedLabel];
     [touchedLabel sizeToFit];
+    
+    //saveボタンを有効に戻す
+    self.navigationItem.rightBarButtonItem.enabled = YES;
 }
+
+-(void)keyboardWillHide
+{
+    [self closeKeyboard:nil];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -434,11 +449,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)drawImageView:(id)sender
-{    
-    // UIImageを指定した生成例
-    imageView.image = _backgroundImage;    
-}
 -(IBAction)generateLabel:(id)sender
 {
     //UIImageViewの中央点をとってくる
@@ -484,11 +494,15 @@
     [boxList addObject:userResizableView];
 }
 
--(IBAction)beLager:(id)sender{
+-(IBAction)beLarger:(id)sender{
     UIFont *font = touchedLabel.font;
     touchedLabel.font = [font fontWithSize:font.pointSize + 2];
     [touchedLabel sizeToFit];
     [self forcusingLabel:touchedLabel];
+    if(CGRectGetMaxY(touchedLabel.frame) >= touchedLabel.superview.bounds.size.height){
+        CGRect labelRect = touchedLabel.frame;
+        touchedLabel.frame = CGRectMake(labelRect.origin.x, touchedLabel.superview.bounds.size.height - labelRect.size.height - 10.0, labelRect.size.width, labelRect.size.height);
+    }
 }
 
 -(IBAction)beSmaller:(id)sender{
@@ -502,17 +516,24 @@
 - (void)panActionForLabel : (UIPanGestureRecognizer *)sender
 {
     CGPoint p = [sender translationInView:self.view];
-	
-    // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
-    CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
-    sender.view.center = movedPoint;
-	
+    CGRect senderFrame = sender.view.frame;
+    NSLog(@"%f, %f, %f", senderFrame.origin.y+senderFrame.size.height, CGRectGetMaxY(senderFrame), sender.view.superview.bounds.size.height);
+    if(senderFrame.origin.x + senderFrame.size.width + p.x > sender.view.superview.bounds.origin.x &&
+       senderFrame.origin.x + p.x <  sender.view.superview.bounds.size.width &&
+       senderFrame.origin.y + p.y >= sender.view.superview.bounds.origin.y &&
+       CGRectGetMaxY(senderFrame) +p.y< sender.view.superview.bounds.size.height
+       ){
+        
+        // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
+        CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
+        sender.view.center = movedPoint;
+	}
     // ドラッグで移動した距離を初期化する
     // これを行わないと、[sender translationInView:]が返す距離は、ドラッグが始まってからの蓄積値となるため、
     // 今回のようなドラッグに合わせてImageを動かしたい場合には、蓄積値をゼロにする
     [sender setTranslation:CGPointZero inView:self.view];
     //[self forcusingLabel:(WordLabel*)sender.view];
-
+    
 }
 
 - (void)handleSingleTapForLabel:(UITapGestureRecognizer *)sender
@@ -554,6 +575,9 @@
     for (WordLabel *label in labelList) {
         [label setAlpha:0];
     }
+    
+    //saveボタンをキーボードが出ている間無効にする
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 -(IBAction)slideToRightFontBar:(id)sender{
